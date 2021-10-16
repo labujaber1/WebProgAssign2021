@@ -1,0 +1,11 @@
+commands to setup a django project via cwa week3
+
+pip - command used to install packages
+    lots of packages Scipy, matplotlib, pandas, numpy
+
+
+
+
+
+
+
