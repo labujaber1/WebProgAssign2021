@@ -1,11 +1,43 @@
 commands to setup a django project via cwa week3
 
-pip - command used to install packages
+pip --> command used to install packages
     lots of packages Scipy, matplotlib, pandas, numpy
+>python --> check have python if not install on pc
+>pip install django==3.0.3 --> check django
+>django-admin startproject <projectname>
+go to projectname directory
+>python manage.py runserver --> to check connection should open in browser
+ctl-click on address 127.0.0.1:8000 on command line and will open browser successful
+>python manage.py startapp <appname> --> create app same directory level as manage.py
+enter app name in settings.py under installed apps
+model is implemented as set of python classes which then create 
+database schema. Enter models.py a 
+class <name>(models.Model): 
+    name = models.CharField(max_length=30)
+    etc
+##include foreign key from other schema created if required
+    vaccinations=models.ManyToManyField("Vaccine",blank=True)
 
 
+class Vaccine(models.Model):
+    name = models.CharField(max_length=30)
 
-
-
-
+creating,adding,removing etc database
+>python manage.py makemigrations
+>python manage.py showmigrations
+>python manage.py migrate
+may need to delete database if changes later but message will inform
+can view db if install sqlite
+can also create .csv file and upload check uncle google
+admin.py used to manually add data to db via browser
+    after migrations 
+    create password >python manage.py createsuperuser
+    enter name,password 
+    in admin.py import class from app name
+    at top enter 'from.models import <class name of model in models.py>
+    enter @admin.register(class name above)
+        pass 
+        #just use for now will later change check runserver
+ 
+ ##check week4 django templates
 
