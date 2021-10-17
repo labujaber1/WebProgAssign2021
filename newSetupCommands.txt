@@ -38,6 +38,9 @@ admin.py used to manually add data to db via browser
     enter @admin.register(class name above)
         pass 
         #just use for now will later change check runserver
- 
+ @admin.register(ClubType)
+class ClubTypeAdmin(admin.ModelAdmin):
+    list_display = ['productName','clubType','size','productPrice']
+   
  ##check week4 django templates
 
