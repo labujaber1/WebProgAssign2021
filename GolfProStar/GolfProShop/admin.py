@@ -11,10 +11,10 @@ class ProductAdmin(admin.ModelAdmin):
     list_display = ['productName','productPrice','clubType','size','grip']
 
 
-#from GolfProShop import views
+from GolfProShop import views
 urlpatterns = [
     path('admin/', admin.site.urls),
-    #path('', views.home, name="home"),
+    path('', views.home, name="home"),
     #pet_detail is name of html page
     #path('appname/<int:pet_id>/', views.pet_detail,
     
