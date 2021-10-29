@@ -1,3 +1,4 @@
 from django.shortcuts import render
 
-# Create your views here.
+def golfshop(request):
+    return render(request, 'golfshop_home.html')
