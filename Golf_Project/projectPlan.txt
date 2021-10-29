@@ -1,0 +1,25 @@
+1. create github repos
+2. clone to laptop
+3. create django menv project
+4. create django app and add to settings
+5. add url path
+6. create templates folder and add home.html
+7. add to views
+TEST --> PASSED
+8. create class models in models
+9. makemigrations, migrate
+10. make superuser
+TEST --> PASSED
+11. install Pillow
+12. add classes to admin
+13. add static to settings
+test --> PASSED
+14. design base.html
+15. design home.html
+TEST --> 
+16. create forms for fitting regist, new customer, order form, 
+TEST --> 
+
+create search product
+create add product,admin login in html
+

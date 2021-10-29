@@ -16,9 +16,20 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 import golfshop.views
+from django.conf import settings 
+from django.conf.urls.static import static
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', golfshop.views.golfshop, name='golfshop')
+    path('', golfshop.views.home, name='home'),
+    path('placeOrder/<str:i>/', golfshop.views.placeOrder,name='placeOrder'),
+    path('', golfshop.views.loginPage,name='login'),
+    path('', golfshop.views.logoutPage,name='logout'),
+    path('', golfshop.views.registerPage,name='register'),
+    path('', golfshop.views.addClub,name='addClub'), 
 
-]
+]+ static(settings.STATIC_URL, document_root = settings.STATIC_ROOT)
+
+urlpatterns += static(settings.MEDIA_URL, document_root = 
+    settings.MEDIA_ROOT)
+

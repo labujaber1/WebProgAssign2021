@@ -79,7 +79,7 @@ admin.py used to manually add data to db via browser
     or wk5 create Job exercise
     edit admin.py add -->
     from .models import <namedef>
-    admin.sit.register(<namedef>)
+    admin.site.register(<namedef>)
         #just use for now will later change check runserver
 
         

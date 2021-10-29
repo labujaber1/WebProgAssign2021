@@ -1,0 +1,19 @@
+{% extends 'Base.html' %}
+ 
+{% block content %}
+ 
+<div class="container ">
+<h1>Products</h1>
+<div class="card-columns" style="padding: 10px; margin: 20px;">
+{% for p  in clubs %}
+    <div class="card" style="width: 18rem; border:5px black solid">
+        <img class="card-img-top" src="{{p.image.url}}" alt="Card image cap">
+        <div class="card-body">
+        <h5 class="card-title">{{p.name}}</h5>
+        <p class="card-text">{{p.summary}}</p>
+        </div>
+    </div>
+ {% endfor %}
+ 
+</div>
+{% endblock %}

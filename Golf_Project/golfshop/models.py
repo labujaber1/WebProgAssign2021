@@ -1,4 +1,5 @@
 from django.db import models
+from django.db.models.deletion import SET_NULL
 
 # Create your models here.
 class Club(models.Model):
@@ -65,5 +66,22 @@ class Customer(models.Model):
     customer_phonenumber = models.CharField(max_length=20, blank=True)
     def _str_(self):
             return self.customer_last_name
+
+class bookFittingForm(models.Model):
+    customer = models.ForeignKey(Customer, null=True, on_delete=models.SET_NULL)
+    product = models.ForeignKey(Club, null=True, on_delete=SET_NULL)
+    fittingDate = models.DateTimeField(auto_now_add=True)
+    fittingStatus = models.CharField(max_length=10, default='Pending')
+    def __str__(self):
+        return self.customer
+
+class orderForm(models.Model):
+    customer = models.ForeignKey(Customer, null=True, on_delete=models.SET_NULL)
+    club_product = models.ForeignKey(Club, null=True, on_delete=SET_NULL)
+    set_product = models.ForeignKey(Club_set, null=True, on_delete=SET_NULL)
+    orderDate = models.DateTimeField(auto_now_add=True)
+    orderStatus = models.CharField(max_length=10, default='Unpaid')
+    def __str__(self):
+        return self.customer
 
 
