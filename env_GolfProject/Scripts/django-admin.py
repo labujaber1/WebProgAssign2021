@@ -1,0 +1,5 @@
+#!C:\Users\labuj\Documents\GitHub\WebProgAssign2021\env_GolfProject\Scripts\python.exe
+from django.core import management
+
+if __name__ == "__main__":
+    management.execute_from_command_line()
