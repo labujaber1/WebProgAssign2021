@@ -26,9 +26,8 @@
       </li>
       {% else %}
       <li class="nav-item">
-        <!--<a class="nav-link" href="{% url 'placeOrder' request.user.customer.id %}">Cart</a>-->
-        <a class="nav-link" href="{% url 'placeOrder' %}">Cart</a>
-     
+        <a class="nav-link" href="{% url 'placeOrder' request.user.customer.id %}">Cart</a>
+          
       </li>
       {% endif %}
       <li class="nav-item">

@@ -22,11 +22,11 @@ from django.conf.urls.static import static
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', golfshop.views.home, name='home'),
-    path('placeOrder/<str:i>/', golfshop.views.placeOrder,name='placeOrder'),
-    path('', golfshop.views.loginPage,name='login'),
-    path('', golfshop.views.logoutPage,name='logout'),
-    path('', golfshop.views.registerPage,name='register'),
-    path('', golfshop.views.addClub,name='addClub'), 
+    path('/placeOrder/<str:i>', golfshop.views.placeOrder,name='placeOrder'),
+    path('/login', golfshop.views.loginPage,name='login'),
+    path('/logout', golfshop.views.logoutPage,name='logout'),
+    path('/register', golfshop.views.registerPage,name='register'),
+    path('/addClub', golfshop.views.addClub,name='addClub'), 
 
 ]+ static(settings.STATIC_URL, document_root = settings.STATIC_ROOT)
 

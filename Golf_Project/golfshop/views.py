@@ -5,14 +5,12 @@ from .forms import *
 from django.http import HttpResponse
 
 #def golfshop(request):
-    #return render(request, 'golfshop_home.html')
+    #return render(request, 'home.html')
 
 def home(request):
-    products = Club.objects.all()
-    context = {
-        'products':products
-    }
-    return render(request,'home.html',context)
+    clubs = Club.objects.all()
+    context = { 'clubs': clubs }
+    return render(request, '/home.html',context)
  
 def placeOrder(request,i):
     customer= Customer.objects.get(id=i)
@@ -23,7 +21,7 @@ def placeOrder(request,i):
             form.save()
             return redirect('/')
     context={'form':form}
-    return render(request,'placeOrder.html',context)
+    return render(request,'/placeOrder.html',context)
  
 def addClub(request):
     form=createproductform()
@@ -33,7 +31,7 @@ def addClub(request):
             form.save()
             return redirect('/')
     context={'form':form}
-    return render(request,'addClub.html',context)
+    return render(request,'/addClub.html',context)
  
 def registerPage(request):
     if request.user.is_authenticated:
@@ -54,7 +52,7 @@ def registerPage(request):
             'form':form,
             'customerform':customerform,
         }
-        return render(request,'register.html',context)
+        return render(request,'/register.html',context)
  
 def loginPage(request):
     if request.user.is_authenticated:
@@ -68,7 +66,7 @@ def loginPage(request):
             login(request,user)
             return redirect('/')
        context={}
-       return render(request,'login.html',context)
+       return render(request,'/login.html',context)
  
 def logoutPage(request):
     logout(request)
