@@ -38,6 +38,7 @@ class Club(models.Model):
         return self.club_name
 
 class Customer(models.Model):
+    customer_id = models.IntegerField(default=0)
     customer_first_name = models.CharField(max_length=20)
     customer_last_name = models.CharField(max_length=20)
     user = models.OneToOneField(User, null=True, on_delete=models.CASCADE)

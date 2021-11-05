@@ -16,10 +16,108 @@ TEST --> PASSED
 test --> PASSED
 14. design base.html
 15. design home.html
+16. design separate footer and header.html and add to home as block content
 TEST --> 
-16. create forms for fitting regist, new customer, order form, 
+17. create forms for fitting regist, new customer, order form, 
+    all as .html and call as block content in home.html
 TEST --> 
 
 create search product
 create add product,admin login in html
 
+
+
+forms views.py
+def placeOrder(request):
+    customer= Customer.objects.all()
+    form=createorderform(instance=customer)
+    if(request.method=='POST'):
+        form=createorderform(request.POST,instance=customer)
+        if(form.is_valid()):
+            form.save()
+            return redirect('/')
+    context={'form':form}
+    return render(request,"placeOrder.html",context)
+ 
+def addClub(request):
+    form=createproductform()
+    if(request.method=='POST'):
+        form=createproductform(request.POST,request.FILES)
+        if(form.is_valid()):
+            form.save()
+            return redirect('/')
+    context={'form':form}
+    return render(request,"/addClub.html",context)
+ 
+def registerPage(request):
+    if request.user.is_authenticated:
+        return redirect('home') 
+    else: 
+        form=createuserform()
+        customerform=createcustomerform()
+        if request.method=='POST':
+            form=createuserform(request.POST)
+            customerform=createcustomerform(request.POST)
+            if form.is_valid() and customerform.is_valid():
+                user=form.save()
+                customer=customerform.save(commit=False)
+                customer.user=user 
+                customer.save()
+                return redirect('login')
+        context={
+            'form':form,
+            'customerform':customerform,
+        }
+        return render(request,"/register.html",context)
+ 
+def loginPage(request):
+    if request.user.is_authenticated:
+        return redirect('home')
+    else:
+       if request.method=="POST":
+        username=request.POST.get('username')
+        password=request.POST.get('password')
+        user=authenticate(request,username=username,password=password)
+        if user is not None:
+            login(request,user)
+            return redirect('/')
+       context={}
+       return render(request,"/login.html",context)
+ 
+def logoutPage(request):
+    logout(request)
+    return redirect('/')
+
+urls.py
+path('placeOrder', golfshop.views.placeOrder,name='placeOrder'),
+path('login', golfshop.views.loginPage,name='login'),
+path('logout', golfshop.views.logoutPage,name='logout'),
+path('register', golfshop.views.registerPage,name='register'),
+path('addClub', golfshop.views.addClub,name='addClub') 
+
+form.py
+class createuserform(UserCreationForm):
+    class Meta:
+        model=User
+        fields=['username','password'] 
+ 
+class createorderform(ModelForm):
+    class Meta:
+        model=orderForm
+        fields="__all__"
+        exclude=['status']
+ 
+class createproductform(ModelForm):
+    class Meta:
+        model=Club
+        fields='__all__'
+ 
+class createcustomerform(ModelForm):
+    class Meta:
+        model=Customer
+        fields='__all__'
+        exclude=['user']
+
+
+
+        

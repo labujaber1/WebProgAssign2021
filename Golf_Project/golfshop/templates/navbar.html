@@ -5,38 +5,72 @@
     font-size: 18px;
     color: #fff;
     margin-right: 20px;
+  
   }
 </style>
- 
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+<div class="p-1 bg-dark text-white text-center">
+  <a class="navbar-brand  bg-warning" href="#">
+    <img src="{% static 'images/GolfProLogo.jpg' %}" alt="" width="35" height="35">
+     GolfProShop</a>
+     
+</div>
+<div class="p-5 bg-primary text-white text-center">
+  <h1>My My</h1>
+  <p>Bubbly fun</p> 
+  <form class="d-flex">
+    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+    <button class="btn btn-outline-light" type="submit">Search</button>
+  </form>
+</div>
+<nav class="navbar sticky-top navbar-expand-lg navbar-dark bg-dark">
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
+  
   <div class="collapse navbar-collapse" id="navbarNav">
- 
-    <ul class="navbar-nav">
-      
-      <li class="nav-item active">
-        <a class="nav-link" href="{% url 'home' %}">Home</a>
-      </li>
-      {% if request.user.is_staff %}
-      </li>
-      <li class="nav-item active">
-        <a class="nav-link" href="{% url 'addClub' %}">Add Club</a>
-      </li>
-      {% else %}
-      <li class="nav-item">
-        <a class="nav-link" href="{% url 'placeOrder' request.user.customer.id %}">Cart</a>
-          
-      </li>
-      {% endif %}
-      <li class="nav-item">
-        <a class="nav-link" href="{% url 'login' %}">Login</a>
-      </li>
-    </ul>
+    <div class="col">
+      <div class="row gx-5">
+        <div class="col p-sm-5 py-4">
+          <h4 class="text-white">About the site</h4>
+          <p class="text-white">A statement about the golf shop and maybe an image</div>
+          <ul class="navbar-nav">
+            <div class="col p-md-5 py-4">
+              <li class="nav-item active">
+                <a class="nav-link" href="{% url 'home' %}">Home</a>
+              </li>
+              <!--show if staff sign in-->
+              {% if request.user.is_staff %}
+              </li>
+              <li class="nav-item active">
+                <a class="nav-link" href="#">Add Club</a>
+              </li>
+              {% else %}
+              <li class="nav-item">
+                <a class="nav-link" href="#">Cart</a>
+              </li>
+              
+              <li class="nav-item">
+                <a class="nav-link" href="#">Login</a>
+              </li>
+              <li class="nav-item ">
+                <a class="nav-link" href="#">Fitting form</a>
+              </li>
+              <li class="nav-item ">
+                <a class="nav-link" href="#">Other form</a>
+              </li>
+              <li class="nav-item ">
+                <a class="nav-link" href="#">Another form</a>
+              </li>
+              {% endif %}
+            </div>
+          </ul>
+        </div> 
+      </div>
+    </div>
   </div>
  
+  <!--personalised greeting to user-->
   <span class="greet">Hello, {{request.user}}</span>
-  <span ><a  class="greet" href="{% url 'logout' %}">Logout</a></span>
+  <span ><a  class="greet" href="#">Logout</a></span>
  
 </nav>
