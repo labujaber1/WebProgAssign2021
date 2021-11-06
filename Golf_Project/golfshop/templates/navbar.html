@@ -8,21 +8,8 @@
   
   }
 </style>
-<div class="p-1 bg-dark text-white text-center">
-  <a class="navbar-brand  bg-warning" href="#">
-    <img src="{% static 'images/GolfProLogo.jpg' %}" alt="" width="35" height="35">
-     GolfProShop</a>
-     
-</div>
-<div class="p-5 bg-primary text-white text-center">
-  <h1>My My</h1>
-  <p>Bubbly fun</p> 
-  <form class="d-flex">
-    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-    <button class="btn btn-outline-light" type="submit">Search</button>
-  </form>
-</div>
-<nav class="navbar sticky-top navbar-expand-lg navbar-dark bg-dark">
+
+<nav class="navbar sticky-top navbar-expand-xl navbar-dark bg-dark">
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -36,7 +23,7 @@
           <ul class="navbar-nav">
             <div class="col p-md-5 py-4">
               <li class="nav-item active">
-                <a class="nav-link" href="{% url 'home' %}">Home</a>
+                <a class="nav-link" href="{% url 'Home' %}">Home</a>
               </li>
               <!--show if staff sign in-->
               {% if request.user.is_staff %}
@@ -53,13 +40,13 @@
                 <a class="nav-link" href="#">Login</a>
               </li>
               <li class="nav-item ">
-                <a class="nav-link" href="#">Fitting form</a>
+                <a class="nav-link" href="#">Book a fitting</a>
               </li>
               <li class="nav-item ">
-                <a class="nav-link" href="#">Other form</a>
+                <a class="nav-link" href="#">Make an enquiry</a>
               </li>
               <li class="nav-item ">
-                <a class="nav-link" href="#">Another form</a>
+                <a class="nav-link" href="#">Email us</a>
               </li>
               {% endif %}
             </div>

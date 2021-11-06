@@ -6,13 +6,31 @@
         </title>
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
     </head>
-    <body>        
-        {% include 'navbar.html' %}
-        {% block content %} 
-        <!--DISPLAYS PRODUCTS, FORMS, SEARCH RESULTS-->
-        {% endblock %}
-        {% include 'footer.html' %}
-       
+    <body> 
+    
+<div class="p-1 bg-primary text-white text-center">
+  <a class="navbar-brand  bg-warning" href="/">
+    <img src="{% static 'images/GolfProLogo.jpg' %}" alt="" width="35" height="35">
+     GolfProShop</a>
+     
+</div>
+{% block bubbly_fun %}
+<div class="p-5 bg-primary text-white text-center">
+  <h1>My My</h1>
+  <p>Bubbly fun</p> 
+  <form class="d-flex">
+    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+    <button class="btn btn-outline-light" type="submit">Search</button>
+  </form>
+</div>
+{% endblock %}
+
+{% include 'navbar.html' %}
+{% block content %} 
+<!--DISPLAYS PRODUCTS, FORMS, SEARCH RESULTS-->
+{% endblock %}
+{% include 'footer.html' %}
+
        
 
 

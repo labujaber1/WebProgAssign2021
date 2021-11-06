@@ -1,0 +1,37 @@
+{% extends 'Base.html' %}
+{% load static %}
+
+{% block bubbly_fun %}
+
+{% endblock %}
+
+
+{% block content %}
+<br>
+<!--display a single product from ProductList.html-->
+
+    <div class="container bg-warning text-white  text-center p-5">
+        <h1>Club details</h1>
+    </div>
+    <div class="container bg-default text-dark  text-center p-5">
+    <img src="{{club.club_image}}">
+    <h1>Name: <b>{{club.club_name}}</b></h1>
+    <br>
+    <p>Brand: {{club.club_brand}}</p>
+    <p>Type: {{club.club_type}}</p>
+    <p>Price: {{club.club_price}}</p>
+    <p>Size: {{club.club_size}}</p>
+    <p>Grip direction: {{club.club_gripDirection}}</p>
+    <p>Gender: {{club.club_gender}}</p>
+    <p>Quantity: {{club.club_quantity}}</p>
+    <p>Stock condition: {{club.club_stockCondition}}</p>
+    <p>Description: {{club.club_summary | capfirst}}</p>
+    </div>
+
+{% endblock %}
+
+
+
+
+
+

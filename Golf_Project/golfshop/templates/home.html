@@ -1,19 +1,51 @@
 {% extends 'Base.html' %}
- 
+{% load static %}
 {% block content %}
- 
-<div class="container ">
-<h1>Products</h1>
-<div class="card-columns" style="padding: 10px; margin: 20px;">
-{% for p  in clubs %}
-    <div class="card" style="width: 18rem; border:5px black solid">
-        <img class="card-img-top" src="{{p.image.url}}" alt="Card image cap">
+
+
+<div style="display: flex; flex-direction: row; flex-wrap: wrap">
+
+
+    <div class="card" style="width: 18rem; margin: 10px">
+        <img src="{% static 'images/246-grrahh.jpg' %} " class="card-img-top">
         <div class="card-body">
-        <h5 class="card-title">{{p.name}}</h5>
-        <p class="card-text">{{p.summary}}</p>
+            <div style="display: flex; flex-direction: row">
+                <h5 class="card-title">Branded single clubs</h5>
+
+            </div>
+            <p class="card-text">This displays a list of single clubs to buy.</p>
+            <a href="{% url 'ProductList' %}" class="btn btn-info" role="button">View all single clubs</a>   
         </div>
     </div>
- {% endfor %}
- 
+
+    <div class="card" style="width: 18rem; margin: 10px">
+        <img src="{% static 'images/246-grrahh.jpg' %} " class="card-img-top">
+        <div class="card-body">
+            <div style="display: flex; flex-direction: row">
+                <h5 class="card-title">Branded club sets</h5>
+
+            </div>
+            <p class="card-text">This displays club sets to buy.</p>
+            <a href="{% url 'ProductList' %}" class="btn btn-info" role="button">View all sets of clubs</a>   
+   
+        </div>
+    </div>
+
+    <div class="card" style="width: 18rem; margin: 10px">
+        <img src="{% static 'images/246-grrahh.jpg' %} " class="card-img-top">
+        <div class="card-body">
+            <div style="display: flex; flex-direction: row">
+                <h5 class="card-title">Accessories</h5>
+
+            </div>
+            <p class="card-text">This will display a list of accessories to buy.</p>
+            <a href="{% url 'ProductList' %}" class="btn btn-info" role="button">View all accessories</a>   
+   
+        </div>
+    </div>
+
 </div>
+
+
+
 {% endblock %}

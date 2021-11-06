@@ -21,9 +21,11 @@ class Club(models.Model):
             )
             ),
         ]
+
     CLUB_GENDER_CHOICES = (('L','Ladies'),('M','Mens'),('J','Juniors'))
     CLUB_SIZE_CHOICES = (('SM','Short'),('M','Medium'),('L','Large'))
-    CLUB_SET_CHOICES = (('F','Full'),('H','Half'))
+    CLUB_SET_CHOICES = (('N','None'),('F','Full'),('H','Half'))
+    CLUB_STOCKCONDITION = (('OOS','Out of stock'),('IS','In stock'))
     club_image = models.ImageField(upload_to='images/')
     club_name = models.CharField('Club name', max_length=50)
     club_brand = models.CharField(max_length=20, choices=CLUB_BRAND_CHOICES, blank=True)
@@ -34,6 +36,8 @@ class Club(models.Model):
     club_gender = models.CharField(max_length=10, choices=CLUB_GENDER_CHOICES, blank=True)
     club_price = models.DecimalField(max_digits=5, decimal_places=2)
     club_set = models.CharField(max_length=10, choices=CLUB_SET_CHOICES, blank=True)
+    club_quantity = models.PositiveIntegerField(default=0)
+    club_stockCondition = models.CharField(max_length=10, choices=CLUB_STOCKCONDITION, default='IS')
     def _str_(self):
         return self.club_name
 

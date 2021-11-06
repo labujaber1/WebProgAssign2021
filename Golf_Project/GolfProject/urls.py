@@ -21,8 +21,9 @@ from django.conf.urls.static import static
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', golfshop.views.home, name='home'),
-    
+    path('', golfshop.views.home, name="Home"),
+    path('/ProductList/', golfshop.views.productList, name="ProductList"),
+    path('/SingleProduct/<int:id>/', golfshop.views.singleProduct, name="SingleProduct")
 
 ]+ static(settings.STATIC_URL, document_root = settings.STATIC_ROOT)
 
