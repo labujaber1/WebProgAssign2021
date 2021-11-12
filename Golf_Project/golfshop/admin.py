@@ -7,8 +7,7 @@ from django.urls import path
 # Register your models here.
 #admin.site.register(Club)
 admin.site.register(Customer)
-admin.site.register(bookFittingForm)
-admin.site.register(orderForm)
+
 
 @admin.register(Club)
 class ClubAdmin(admin.ModelAdmin):

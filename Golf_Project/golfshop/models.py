@@ -1,7 +1,5 @@
 from django.db import models
-from django.db.models.deletion import SET_NULL
-from django.contrib.auth.models import User
- 
+
 # Create your models here.
 class Club(models.Model):
     CLUB_BRAND_CHOICES = (('WIL','Wilson'),('PK','Pike'),('FZ','Frazer'))
@@ -42,32 +40,12 @@ class Club(models.Model):
         return self.club_name
 
 class Customer(models.Model):
-    customer_id = models.IntegerField(default=0)
-    customer_first_name = models.CharField(max_length=20)
-    customer_last_name = models.CharField(max_length=20)
-    user = models.OneToOneField(User, null=True, on_delete=models.CASCADE)
-    #using user model instead of loads of attributes, 
-    # can use class abstractbaseuser to add more fields if needed
-    #and overright base class djangowaves.com
+    GENDER_CHOICES = (('L','Ladies'),('M','Mens'),('J','Juniors'))
+    first_name = models.CharField(max_length=20)
+    last_name = models.CharField(max_length=20)
+    gender = models.CharField(max_length=10, choices = GENDER_CHOICES,blank=True)
     
+    class Meta:
+        verbose_name_plural = "Customer"
     def _str_(self):
-            return self.customer_last_name
-
-class bookFittingForm(models.Model):
-    customer = models.ForeignKey(Customer, null=True, on_delete=models.SET_NULL)
-    product = models.ForeignKey(Club, null=True, on_delete=SET_NULL)
-    fittingDate = models.DateTimeField(auto_now_add=True)
-    fittingStatus = models.CharField(max_length=10, default='Pending')
-    def __str__(self):
-        return self.customer
-
-class orderForm(models.Model):
-    customer = models.ForeignKey(Customer, null=True, on_delete=models.SET_NULL)
-    club_product = models.ForeignKey(Club, null=True, on_delete=SET_NULL)
-    
-    orderDate = models.DateTimeField(auto_now_add=True)
-    orderStatus = models.CharField(max_length=10, default='Unpaid')
-    def __str__(self):
-        return self.customer
-
-
+            return self.last_name

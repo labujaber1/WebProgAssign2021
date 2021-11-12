@@ -16,16 +16,32 @@ TEST --> PASSED
 test --> PASSED
 14. design base.html
 15. design home.html
-16. design separate footer and header.html and add to home as block content
-TEST --> 
-17. create forms for fitting regist, new customer, order form, 
+     
+16. design footer and header.html and add to home as block content
+16.1 - display model data in list form get images later
+TEST --> PASSED
+17. create forms for fitting regist, new customer, order form, GENERAL ENQUIRY 
     all as .html and call as block content in home.html
 TEST --> 
+18. connect to database 
+18.1 - TEST UNIT METHODS
+18.2 - RUN --> 
+19. store all data to db 
+19.1 create insert
+19.2 - TEST UNIT METHODS
+        RUN --> 
 
+20. 
 create search product
 create add product,admin login in html
+add images for display products etc
+#get nav method to go back and forth like tree thingy
 
 
+html pages
+base
+home
+navbar
 
 forms views.py
 def placeOrder(request):
@@ -118,6 +134,37 @@ class createcustomerform(ModelForm):
         fields='__all__'
         exclude=['user']
 
+/login.html
+{% extends 'Base.html' %}
+{% load static%}
+{% block content %}
+<div class="container jumbotron">
+    <form method="POST" action="">
+        {% csrf_token %}
+        <p><input type="text" name="username" placeholder="Username..."></p>
+        <p><input type="password" name="password" placeholder="Password..." ></p>
+        <input class="btn btn-success" type="submit" value="Login">
+        <p>Do not have an account  <a href="{% url 'register' %}">Register</a></p>
+    </form>
+</div>
+{% endblock %}
 
 
-        
+models
+class OrderForm(models.Model):
+    customer = models.ForeignKey(Customer, null=True, on_delete=models.SET_NULL)
+    club_product = models.ForeignKey(Club, null=True, on_delete=SET_NULL)
+    orderDate = models.DateTimeField(auto_now_add=True)
+    orderStatus = models.CharField(max_length=10, default='Unpaid')
+    def __str__(self):
+        return self.customer  
+
+        class BookFittingForm(models.Model):
+    BFcustomer = models.ForeignKey(Customer, null=True, on_delete=models.SET_NULL)
+    BFproduct = models.ForeignKey(Club, null=True, on_delete=SET_NULL)
+    fittingDate = models.DateTimeField(auto_now_add=True)
+    fittingStatus = models.CharField(max_length=10, default='Pending')
+    def __str__(self):
+        return self.customer
+
+   

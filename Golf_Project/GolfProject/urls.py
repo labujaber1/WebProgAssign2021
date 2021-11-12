@@ -23,8 +23,10 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', golfshop.views.home, name="Home"),
     path('/ProductList/', golfshop.views.productList, name="ProductList"),
-    path('/SingleProduct/<int:id>/', golfshop.views.singleProduct, name="SingleProduct")
+    path('/SingleProduct/<int:id>/', golfshop.views.singleProduct, name="SingleProduct"),
+    path('/RegisterCustomer/',golfshop.views.registerCustomer, name="RegisterCustomer")
 
+    
 ]+ static(settings.STATIC_URL, document_root = settings.STATIC_ROOT)
 
 urlpatterns += static(settings.MEDIA_URL, document_root = 
