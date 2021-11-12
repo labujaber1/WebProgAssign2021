@@ -1,7 +1,8 @@
 from django.shortcuts import render,redirect
 from django.http import Http404
+from django.views.generic.base import TemplateView
 from .form import *
-
+from django.views.generic import ListView
 
 
 
@@ -28,23 +29,32 @@ def singleProduct(request, id):
     return render(request, 'SingleProduct.html', {'club':club,})
 
 def registerCustomer(request):
-    if request.user.is_authenticated:
-        return redirect('home') 
-    else: 
-        form=customerRegisterForm()
-        customerform=customerRegisterForm()
-        if request.method=='POST':
-            form=customerRegisterForm(request.POST)
-            customerform=customerRegisterForm(request.POST)
-            if form.is_valid() and customerform.is_valid():
-                user=form.save()
-                customer=customerform.save(commit=False)
-                customer.user=user 
-                customer.save()
-                return redirect('/')
-        context={
-            'form':form,
-            'customerform':customerform,
-        }
-        return render(request,"/RegisterCustomer.html",context)
- 
+    form=customerRegisterForm()
+    if(request.method=='POST'):
+        form=customerRegisterForm(request.POST,request.FILES)
+        if(form.is_valid()):
+            form.save()
+            return redirect('/')
+        
+    return render(request, 'RegisterCustomer.html', {'RegisterCustomer': form})
+
+def bookFitting(request):
+    form=customerFittingForm()
+    if(request.method=='POST'):
+        form=customerFittingForm(request.POST,request.FILES)
+        if(form.is_valid()):
+            form.save()
+            return redirect('/')
+        
+    return render(request, 'BookFitting.html', {'BookFitting': form})
+####
+def generalEnquiry(request):
+    form=generalEnquiriesForm()
+    if(request.method=='POST'):
+        form=generalEnquiriesForm(request.POST,request.FILES)
+        if(form.is_valid()):
+            form.save()
+            return redirect('/')
+       
+    return render(request, 'GeneralEnquiry.html', {'GeneralEnquiry': form})
+

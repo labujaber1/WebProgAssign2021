@@ -20,9 +20,9 @@ test --> PASSED
 16. design footer and header.html and add to home as block content
 16.1 - display model data in list form get images later
 TEST --> PASSED
-17. create forms for fitting regist, new customer, order form, GENERAL ENQUIRY 
+17. create forms for fitting regist, new customer, GENERAL ENQUIRY 
     all as .html and call as block content in home.html
-TEST --> 
+TEST --> PASSED
 18. connect to database 
 18.1 - TEST UNIT METHODS
 18.2 - RUN --> 
@@ -33,7 +33,7 @@ TEST -->
 
 20. 
 create search product
-create add product,admin login in html
+create add product,admin login in html --> passed
 add images for display products etc
 #get nav method to go back and forth like tree thingy
 

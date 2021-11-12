@@ -17,7 +17,7 @@
         {% for club in club %}
             <li>
                 <a href="{% url 'SingleProduct' club.id %}">
-                    {{club.club_name | capfirst}}
+                    {{club.club_name | capfirst}}, {{club.club_type }}
                 </a>
                
             </li>

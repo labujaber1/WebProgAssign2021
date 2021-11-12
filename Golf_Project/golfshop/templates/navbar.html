@@ -26,7 +26,7 @@
                 <a class="nav-link" href="{% url 'Home' %}">Home</a>
               </li>
               <!--show if staff sign in-->
-              {% if request.user.is_staff %}
+              <!--{% if request.user.is_staff %}
               </li>
               <li class="nav-item active">
                 <a class="nav-link" href="#">Add Club</a>
@@ -37,13 +37,13 @@
               </li>
               
               <li class="nav-item">
-                <a class="nav-link" href="#">Login</a>
+                <a class="nav-link" href="#">Login</a>-->
               </li>
               <li class="nav-item ">
-                <a class="nav-link" href="#">Book a fitting</a>
+                <a class="nav-link" href="{% url 'BookFitting' %}">Book a fitting</a>
               </li>
               <li class="nav-item ">
-                <a class="nav-link" href="#">Make an enquiry</a>
+                <a class="nav-link" href="{% url 'GeneralEnquiry' %}">Make an enquiry</a>
               </li>
               <li class="nav-item ">
                 <a class="nav-link" href="{% url 'RegisterCustomer' %}">Register Customer</a>

@@ -2,10 +2,12 @@
 {% load static%}
 {% block content %}
 <div class="container jumbotron">
+    <h4>Customer registry form</h4>
+    <br>
     <form method="POST" action="" >
         {% csrf_token %}
         {{form.as_p}}
-        {{customerform.as_p}} 
+        {{RegisterCustomer.as_p}} 
        
         <input class="btn btn-success" type="submit" value="Register Customer">
     </form>

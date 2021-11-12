@@ -2,12 +2,16 @@
 {% load static%}
 {% block content %}
 <div class="container jumbotron">
+    <h4>Make a general enquiry</h4>
+    <br>
     <form method="POST" action="">
         {% csrf_token %}
-        <p><input type="text" name="username" placeholder="Username..."></p>
-        <p><input type="password" name="password" placeholder="Password..." ></p>
-        <input class="btn btn-success" type="submit" value="Login">
-        <p>Do not have an account  <a href="{% url 'register' %}">Register</a></p>
+        <p><input type="text" name="name" placeholder="name..."></p>
+        <p><input type="text" name="email" placeholder="email..." ></p>
+        <p><input type="text" name="phoneNumber" placeholder="phoneNumber..."></p>
+        <p><input type="text" name="enquiry" placeholder="enquiry..." ></p>
+        <input class="btn btn-success" type="submit" value="GeneralEnquiry">
+        <p>Not registered?<a href="{% url 'RegisterCustomer' %}">Register</a></p>
     </form>
 </div>
 {% endblock %}

@@ -18,9 +18,10 @@
 <div class="p-5 bg-primary text-white text-center">
   <h1>My My</h1>
   <p>Bubbly fun</p> 
-  <form class="d-flex">
-    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-    <button class="btn btn-outline-light" type="submit">Search</button>
+  <!--search bar send results to ProductList.html-->
+  <form class="d-flex" action="{% url 'ProductList' %}" method="get">
+    <input class="form-control me-2" name="Query" type="search" placeholder="Search.." aria-label="Search">
+    <button class="btn btn-outline-light"  type="submit">Search</button>
   </form>
 </div>
 {% endblock %}
@@ -36,7 +37,7 @@
         </p>
         <p class="mb-1">GolfProshop is a &copy; GolfProStar</p>
         <p class="mb-0">Find us on <a href="#">FACEBOOK</a> or see us on <a href="#">TWITTER</a>.</p>
-    
+        <a href="{% url 'admin:index' %}">Admin sign-in</a>
 </footer>
 
        
