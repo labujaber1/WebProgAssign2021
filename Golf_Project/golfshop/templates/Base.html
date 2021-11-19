@@ -16,8 +16,14 @@
 </div>
 {% block bubbly_fun %}
 <div class="p-5 bg-primary text-white text-center">
+
   <h1>My My</h1>
+  <!--<img style="max-width:270px; max-height:200px;" src="{% static 'images/familyplay.jpg' %}" class="img-fluid " > 
+  -->
   <p>Bubbly fun</p> 
+{% load static %}
+            
+   
   <!--search bar send results to ProductList.html-->
   <form class="d-flex" action="{% url 'ProductList' %}" method="get">
     <input class="form-control me-2" name="Query" type="search" placeholder="Search.." aria-label="Search">
