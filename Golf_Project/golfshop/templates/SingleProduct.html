@@ -13,18 +13,18 @@
     <div class="container bg-warning text-white  text-center p-5">
         <h1>Club details</h1>
     </div>
-    <div class="container bg-default text-dark  text-center p-5">
-    <img src="{{club.club_image}}">
-    <h1>Name: <b>{{club.club_name}}</b></h1>
+    <div class="container bg-success text-white  text-center p-5">
+    <img src="{{club.club_image.url}}">
+    <h1 class="text-dark">Name: <b>{{club.club_name}}</b></h1>
     <br>
-    <p>Brand: {{club.club_brand}}</p>
-    <p>Type: {{club.club_type}}</p>
-    <p>Price: {{club.club_price}}</p>
-    <p>Size: {{club.club_size}}</p>
-    <p>Grip direction: {{club.club_gripDirection}}</p>
-    <p>Gender: {{club.club_gender}}</p>
-    <p>Quantity: {{club.club_quantity}}</p>
-    <p>Stock condition: {{club.club_stockCondition}}</p>
+    <p>Brand: {{club.get_club_brand_display}}</p>
+    <p>Type: {{club.get_club_type_display}}</p>
+    <p>Price: £{{club.club_price}}</p>
+    <p>Size: {{club.get_club_size_display}}</p>
+    <p>Grip direction: {{club.get_club_gripDirection_display}}</p>
+    <p>Gender: {{club.get_club_gender_display}}</p>
+    <p>Quantity in stock: {{club.club_quantity}}</p>
+    <p>Stock condition: {{club.get_club_stockCondition_display}}</p>
     <p>Description: {{club.club_summary | capfirst}}</p>
     </div>
 
