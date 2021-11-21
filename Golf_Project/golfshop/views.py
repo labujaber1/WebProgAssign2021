@@ -14,16 +14,18 @@ def productList(request):
     try:
         #perform an ORM query to get specific clubs
         club = Club.objects.all()
-        
+        #clubSet = SetOfClubs.objects.all()
+        #access = Accessories.objects.all()
     except Club.DoesNotExist:
-        raise Http404("Clubs not found")
+        raise Http404("Products not found")
     return render(request, 'ProductList.html', {'club':club,})
 
 def singleProduct(request, id):
     try:
         #perform an ORM query to get specific clubs
         club = Club.objects.get(id=id)
-        
+        #clubSet = SetOfClubs.objects.get(id=id)
+        #access = Accessories.objects.get(id=id)
     except Club.DoesNotExist:
         raise Http404("Club not found")
     return render(request, 'SingleProduct.html', {'club':club,})

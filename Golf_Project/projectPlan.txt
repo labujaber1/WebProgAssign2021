@@ -27,21 +27,46 @@ TEST --> PASSED
 18.1 - TEST UNIT METHODS
 18.2 - RUN --> 
 19. store all data to db 
-19.1 create insert
+19.1 create insert (in admin)
 19.2 - TEST UNIT METHODS
         RUN --> 
 
 20. 
-create search product
+create search function
+create advanced search
 create add product,admin login in html --> passed
-add images for display products etc
-#get nav method to go back and forth like tree thingy
-
-
+add images for display products etc --> passed
+#get nav method breadcumbs --> failed changed mind no need
+add accessories model
+split club set from model leave fk
+add order html (use wk8)
+add back button
+create login function
+create basket?
 html pages
 base
 home
 navbar
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 forms views.py
 def placeOrder(request):

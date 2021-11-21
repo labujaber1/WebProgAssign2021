@@ -9,39 +9,24 @@
 
 <!--List of products-->
 <br>
- <div class="container bg-success text-white text-center p-5" >
+<div class="container bg-success text-white text-center p-5" >
         <h1>Club list</h1>
+</div>
+<div class="container  bg-warning text-dark ">
+    <div style="display: flex; flex-direction: row; flex-wrap: wrap">
+    {% for club in club %}
+        <ul>
+            <div class="card" style="width: 9rem;  margin: 8px">
+                <img src="{{ club.club_image.url }}" class="card-img-top" style="height: 9rem" alt="golf club">
+                    <div class="card-body">
+                        <a href="{% url 'SingleProduct' club.id %}">
+                            {{club.club_name | capfirst}} {{club.get_club_type_display }} {{club.get_club_set_display}}
+                        </a>   
+                    </div>
+            </div>
+        </ul>
+    {% endfor %}
     </div>
-    <div class="container  bg-warning text-dark ">
-     <div style="display: flex; flex-direction: row; flex-wrap: wrap">
-        {% for club in club %}
-        
-                <div class="card" style="width: 9rem; margin: 10px">
-                    <img src="{{ club.club_image.url }}" class="card-img-top">
-                        <div class="card-body">
-                            <a href="{% url 'SingleProduct' club.id %}">
-                                {{club.club_name | capfirst}} {{club.get_club_type_display }} {{club.get_club_set_display}}
-                            </a>   
-                        </div>
-                </div>
-        {% endfor %}
-        </div>
-    </div>
-
-
-{% comment %} <div class="container bg-light text-dark text-center p-5"> 
-    <ul class="list-unstyled  ">
-        {% for club in club %}
-            <li>
-                <a href="{% url 'SingleProduct' club.id %}">
-                    {{club.club_name | capfirst}}, {{club.club_type }}
-                </a>
-               
-            </li>
-        {% endfor %}
-    
-    </ul>
-</div> {% endcomment %}
+</div>
 
 {% endblock %}
-### do breadcumbs nav and change size of text in list

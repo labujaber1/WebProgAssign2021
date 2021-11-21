@@ -1,12 +1,13 @@
 from django.db import models
+#from django.db.models.fields.related import ForeignKey
 
-# Create your models here.
+
 class Club(models.Model):
     CLUB_BRAND_CHOICES = (('WIL','Wilson'),('PK','Pike'),('FZ','Frazer'))
     CLUB_GRIPDIRECTION_CHOICES = (('LH','Left hand'),('RH','Right hand'))
     CLUB_TYPE_CHOICES = [
         ('OTHER', (
-            ('DR','Driver'),('W','Wedge'),('P','Putter')
+            ('DR','Driver'),('W','Wedge'),('P','Putter'),('F','Fairway')
             )
         ),
         ('IRON', (
@@ -14,29 +15,56 @@ class Club(models.Model):
             ('7i','7 iron'),('8i','8 iron')
             )
         ),
-        ('WOOD', (
-            ('3w','3 wood'),('2w','2 wood'),('1w','1 wood')
-            )
-            ),
         ]
     CLUB_GENDER_CHOICES= (('L','Ladies'),('M','Mens'),('J','Juniors'))
     CLUB_SIZE_CHOICES= (('SM','Short'),('M','Medium'),('L','Large'))
-    CLUB_SET_CHOICES= (('N','None'),('F','Full'),('H','Half'))
-    CLUB_STOCKCONDITION= (('OOS','Out of stock'),('IS','In stock'))
-    club_image= models.ImageField(upload_to='images/')
-    club_name= models.CharField('Club name', max_length=50)
+    STOCKCONDITION= (('OOS','Out of stock'),('IS','In stock'))
+    club_image= models.ImageField(upload_to='images/', blank=True)
+    club_name= models.CharField(max_length=20, blank=True)
     club_brand= models.CharField(max_length=20, choices=CLUB_BRAND_CHOICES, blank=True)
     club_type= models.CharField(max_length=20, choices=CLUB_TYPE_CHOICES, blank=True)
-    club_summary= models.CharField('Club summary',max_length=200)
+    club_summary= models.CharField(max_length=200, blank=True)
     club_size= models.CharField(max_length=10, choices=CLUB_SIZE_CHOICES, blank=True)
     club_gripDirection= models.CharField(max_length=10, choices=CLUB_GRIPDIRECTION_CHOICES, blank=True) 
     club_gender= models.CharField(max_length=10, choices=CLUB_GENDER_CHOICES, blank=True)
-    club_price= models.DecimalField(max_digits=5, decimal_places=2)
-    club_set= models.CharField(max_length=10, choices=CLUB_SET_CHOICES, blank=True)
-    club_quantity= models.PositiveIntegerField(default=0)
-    club_stockCondition= models.CharField(max_length=10, choices=CLUB_STOCKCONDITION, default='IS')
+    club_price= models.DecimalField(max_digits=6, decimal_places=2)
+    club_stockCondition= models.CharField(max_length=10, choices=STOCKCONDITION, default='IS')
+    quantity= models.PositiveIntegerField(default=0)
     def _str_(self):
         return self.club_name
+
+class SetOfClubs(models.Model):
+    CLUB_SET_CHOICES= (('N','None'),('F','Full'),('H','Half'))
+    STOCKCONDITION= (('OOS','Out of stock'),('IS','In stock'))
+    CLUB_GENDER_CHOICES= (('L','Ladies'),('M','Mens'),('J','Juniors'))
+    CLUB_SIZE_CHOICES= (('SM','Short'),('M','Medium'),('L','Large'))
+    CLUB_BRAND_CHOICES = (('WIL','Wilson'),('PK','Pike'),('FZ','Frazer'))
+    CLUB_GRIPDIRECTION_CHOICES = (('LH','Left hand'),('RH','Right hand'))
+    clubSet_image= models.ImageField(upload_to='images/', blank=True)
+    clubSet_type= models.CharField(max_length=10, choices=CLUB_SET_CHOICES, blank=True)
+    clubSet_name= models.CharField(max_length=20, blank=True)
+    clubSet_brand= models.CharField(max_length=20, choices=CLUB_BRAND_CHOICES, blank=True)
+    clubSet_summary= models.CharField(max_length=200, blank=True)
+    clubSet_size= models.CharField(max_length=10, choices=CLUB_SIZE_CHOICES, blank=True)
+    clubSet_gripDirection= models.CharField(max_length=10, choices=CLUB_GRIPDIRECTION_CHOICES, blank=True) 
+    clubSet_gender= models.CharField(max_length=10, choices=CLUB_GENDER_CHOICES, blank=True)
+    clubSet_price= models.DecimalField(max_digits=6, decimal_places=2)
+    clubSet_stockCondition= models.CharField(max_length=10, choices=STOCKCONDITION, default='IS')
+    quantity= models.PositiveIntegerField(default=0)
+    def _str_(self):
+        return self.clubSet_name
+
+class Accessories(models.Model):
+    STOCKCONDITION= (('OOS','Out of stock'),('IS','In stock'))
+    access_image= models.ImageField(upload_to='images/', blank=True)
+    access_name = models.CharField(max_length=20, blank=True)
+    access_description = models.CharField(max_length=30, blank=True)
+    access_price = models.DecimalField(max_digits=5, decimal_places=2)
+    access_stockCondition= models.CharField(max_length=10, choices=STOCKCONDITION, default='IS')
+    quantity= models.PositiveIntegerField(default=0)
+    def _str_(self):
+        return self.access_name
+
 
 class Customer(models.Model):
     GENDER_CHOICES= (('L','Lady'),('M','Male'),('J','Juniors'))
