@@ -1,0 +1,33 @@
+{% extends 'Base.html' %}
+{% load static %}
+
+{% block bubbly_fun %}
+
+{% endblock %}
+
+
+{% block content %}
+
+<!--display a single product from ProductList.html-->
+
+<a href="{% url 'ProductListClubSet' %}" class="btn btn-outline-info" style="margin:5px" role="button">Back</a>
+<br>
+<div class="container bg-warning text-white  text-center p-5">
+    <h1>Set of club details</h1>
+</div>
+<div class="container bg-success text-white  text-center p-5">
+    <img src="{{clubSet.clubSet_image.url}}" class="card-img-top" style="width: 11rem" alt="golf club">
+    <h1 class="text-dark">Name: <b>{{clubSet.clubSet_name}}</b></h1>
+    <br>
+    <p>Brand: {{clubSet.get_clubSet_brand_display}}</p>
+    <p>Type: {{clubSet.get_clubSet_type_display}}</p>
+    <p>Price: £{{clubSet.clubSet_price}}</p>
+    <p>Size: {{clubSet.get_clubSet_size_display}}</p>
+    <p>Grip direction: {{clubSet.get_clubSet_gripDirection_display}}</p>
+    <p>Gender: {{clubSet.get_clubSet_gender_display}}</p>
+    
+    <p>Stock condition: {{clubSet.get_clubSet_stockCondition_display}}</p>
+    <p>Description: {{clubSet.clubSet_summary | capfirst}}</p>
+</div>
+<br><br>
+{% endblock %}

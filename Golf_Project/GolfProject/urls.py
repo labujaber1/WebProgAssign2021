@@ -24,8 +24,14 @@ from django.conf.urls.static import static
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', golfshop.views.home, name="Home"),
-    path('ProductList/', golfshop.views.productList, name="ProductList"),
+    path('ProductListClubs/', golfshop.views.productListClubs, name="ProductListClubs"),
+    path('ProductListClubSet/', golfshop.views.productListClubSet, name="ProductListClubSet"),
+    path('ProductListAccess/', golfshop.views.productListAccess, name="ProductListAccess"),
+    
     path('SingleProduct/<int:id>/', golfshop.views.singleProduct, name="SingleProduct"),
+    path('SetOfProducts/<int:id>/', golfshop.views.setOfProducts, name="SetOfProducts"),
+    path('AccessProducts/<int:id>/', golfshop.views.accessProducts, name="AccessProducts"),
+    
     path('RegisterCustomer',golfshop.views.registerCustomer, name="RegisterCustomer"),
     path('GeneralEnquiry',golfshop.views.generalEnquiry, name="GeneralEnquiry"),
     path('BookFitting',golfshop.views.bookFitting, name="BookFitting"),

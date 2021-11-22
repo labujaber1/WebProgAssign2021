@@ -15,3 +15,5 @@ class customerFittingForm(ModelForm):
     class Meta:
         model=BookFitting
         fields='__all__'    
+
+##customer order form

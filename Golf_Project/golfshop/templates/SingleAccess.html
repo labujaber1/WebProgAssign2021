@@ -1,0 +1,33 @@
+{% extends 'Base.html' %}
+{% load static %}
+
+{% block bubbly_fun %}
+
+{% endblock %}
+
+
+{% block content %}
+
+<!--display a single product from ProductList.html-->
+
+<a href="{% url 'ProductListAccess' %}" class="btn btn-outline-info" style="margin:5px" role="button">Back</a>
+<br>
+<div class="container bg-warning text-white  text-center p-5">
+    <h1>Accessory details</h1>
+</div>
+<div class="container bg-success text-white  text-center p-5">
+    <img src="{{access.access_image.url}}" class="card-img-top" style="width: 11rem" alt="golf club">
+    <h1 class="text-dark">Name: <b>{{access.access_name}}</b></h1>
+    <br>
+    <p>Brand: {{access.get_access_brand_display}}</p>
+    <p>Type: {{access.get_access_type_display}}</p>
+    <p>Price: £{{access.access_price}}</p>
+    <p>Size: {{access.get_access_size_display}}</p>
+    <p>Grip direction: {{access.get_access_gripDirection_display}}</p>
+    <p>Gender: {{access.get_access_gender_display}}</p>
+    
+    <p>Stock condition: {{access.access_club_stockCondition_display}}</p>
+    <p>Description: {{access.access_summary | capfirst}}</p>
+</div>
+<br><br>
+{% endblock %}

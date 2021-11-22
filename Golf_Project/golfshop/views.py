@@ -10,7 +10,7 @@ def home(request):
     club=Club.objects.all()
     return render(request, 'Home.html', {'club':club,})
     
-def productList(request):
+def productListClubs(request):
     try:
         #perform an ORM query to get specific clubs
         club = Club.objects.all()
@@ -18,17 +18,67 @@ def productList(request):
         #access = Accessories.objects.all()
     except Club.DoesNotExist:
         raise Http404("Products not found")
-    return render(request, 'ProductList.html', {'club':club,})
+    return render(request, 'ProductListClubs.html', {'club':club,})
+
+def productListClubSet(request):
+    try:
+        #perform an ORM query to get specific clubs
+        #club = Club.objects.all()
+        clubSet = SetOfClubs.objects.all()
+        #access = Accessories.objects.all()
+    except Club.DoesNotExist:
+        raise Http404("Products not found")
+    return render(request, 'ProductListClubSet.html', {'clubSet':clubSet,})
+
+def productListAccess(request):
+    try:
+        #perform an ORM query to get specific clubs
+        #club = Club.objects.all()
+        #clubSet = SetOfClubs.objects.all()
+        access = Accessories.objects.all()
+    except Club.DoesNotExist:
+        raise Http404("Products not found")
+    return render(request, 'ProductListAccess.html', {'access':access,})
+
+""" def singleProduct(request, id):
+    try:
+        if(request.method== 'club.id'):
+            #perform an ORM query to get specific clubs
+            club = Club.objects.get(id=id)
+            return render(request, 'SingleProduct.html', {'club':club,})
+        if(request.method== 'clubSet.id'):
+            clubSet = SetOfClubs.objects.get(id=id)
+            return render(request, 'SingleClubSet.html', {'clubSet':clubSet,})
+        if(request.method== 'access.id'):
+            access = Accessories.objects.get(id=id)
+            return render(request, 'SingleAccess.html', {'access':access,})
+    except Club.DoesNotExist:
+        raise Http404("Club not found")
+    return render(request, 'Home.html',) """
 
 def singleProduct(request, id):
     try:
         #perform an ORM query to get specific clubs
         club = Club.objects.get(id=id)
-        #clubSet = SetOfClubs.objects.get(id=id)
-        #access = Accessories.objects.get(id=id)
     except Club.DoesNotExist:
         raise Http404("Club not found")
     return render(request, 'SingleProduct.html', {'club':club,})
+
+def setOfProducts(request,id):
+    try:
+        clubSet = SetOfClubs.objects.get(id=id)
+    except Club.DoesNotExist:
+        raise Http404("Set of clubs not found")
+    return render(request, 'SetOfProducts.html', {'clubSet':clubSet,})
+
+def accessProducts(request,id):
+    try:
+        access = Accessories.objects.get(id=id)
+    except Club.DoesNotExist:
+        raise Http404("Accessories not found")
+    return render(request, 'SingleAccess.html', {'access':access,})
+
+
 
 def registerCustomer(request):
     form=customerRegisterForm()

@@ -25,10 +25,10 @@
             
    
   <!--search bar send results to ProductList.html-->
-  <form class="d-flex" action="{% url 'ProductList' %}" method="get">
+  {% comment %} <form class="d-flex" action="{% url 'ProductListClubs' %}" method="get">
     <input class="form-control me-2" name="Query" type="search" placeholder="Search.." aria-label="Search">
     <button class="btn btn-outline-light"  type="submit">Search</button>
-  </form>
+  </form> {% endcomment %}
 </div>
 {% endblock %}
 
