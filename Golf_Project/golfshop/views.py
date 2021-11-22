@@ -109,4 +109,4 @@ def generalEnquiry(request):
             return redirect('/')
        
     return render(request, 'GeneralEnquiry.html', {'GeneralEnquiry': form})
-
+#add
