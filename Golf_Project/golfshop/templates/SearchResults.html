@@ -1,0 +1,33 @@
+{% extends 'Base.html' %}
+{% load static %}
+
+{% block bubbly_fun %}
+
+{% endblock %}
+
+
+{% block content %}
+
+<!--display a single product from ProductList.html-->
+
+<a href="{% url 'ProductList' %}" class="btn btn-outline-info" style="margin:5px" role="button">Back</a>
+<br>
+<div class="container bg-warning text-white  text-center p-5">
+    <h1>Club details</h1>
+</div>
+<div class="container bg-success text-white  text-center p-5">
+    <img src="{{product.image.url}}" class="card-img-top" style="width: 11rem" alt="golf club">
+    <h1 class="text-dark">Name: <b>{{product.name}}</b></h1>
+    <br>
+    <p>Brand: {{product.get_brand_display}}</p>
+    <p>Type: {{product.get_type_display}}</p>
+    <p>Price: £{{product.price}}</p>
+    <p>Size: {{product.get_size_display}}</p>
+    <p>Grip direction: {{product.get_gripDirection_display}}</p>
+    <p>Gender: {{product.get_ender_display}}</p>
+    
+    <p>Stock condition: {{product.get_stockCondition_display}}</p>
+    <p>Description: {{product.summary | capfirst}}</p>
+</div>
+<br><br>
+{% endblock %}

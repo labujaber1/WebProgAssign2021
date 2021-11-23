@@ -12,31 +12,19 @@
   <a class="navbar-brand  bg-warning" href="/">
     <img src="{% static 'images/GolfProLogo.jpg' %}" alt="" width="35" height="35">
      GolfProShop</a>
-     
+    
 </div>
 {% block bubbly_fun %}
 <div class="p-5 bg-primary text-white text-center">
-
   <h1>My My</h1>
   <!--<img style="max-width:270px; max-height:200px;" src="{% static 'images/familyplay.jpg' %}" class="img-fluid " > 
   -->
   <p>Bubbly fun</p> 
-{% load static %}
-            
-   
-  <!--search bar send results to ProductList.html-->
-  {% comment %} <form class="d-flex" action="{% url 'ProductListClubs' %}" method="get">
-    <input class="form-control me-2" name="Query" type="search" placeholder="Search.." aria-label="Search">
-    <button class="btn btn-outline-light"  type="submit">Search</button>
-  </form> {% endcomment %}
+
 </div>
 {% endblock %}
 
 {% include 'Navbar.html' %}
-
-
-
-
 
 {% block content %} 
 <!--DISPLAYS PRODUCTS, FORMS, SEARCH RESULTS-->
