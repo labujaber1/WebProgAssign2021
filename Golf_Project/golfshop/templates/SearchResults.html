@@ -12,9 +12,9 @@
 <!--display a single product from ProductList.html-->
 
 {% for result in results %} 
-    <li>   
-        <a href="{% url 'SingleProduct' result.id %}" class="text-dark text-decoration-none text-center"> <p>{{result.name}}</p></a>
-    </li>
+    <ul>   
+        <a href="{% url 'SingleProduct' result.id %}" class=" text-dark text-decoration-none text-center"> <p>{{result.name}}</p></a>
+    </ul>
   {% endfor %}
 
 

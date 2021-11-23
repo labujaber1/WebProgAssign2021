@@ -33,20 +33,18 @@ def search(request):
 
 def club(request):
     try:
-        if request.method == "POST":
-            query_name = request.POST.get('Club',None)
-            if query_name:  
-                product = Product.objects.filter(category__icontains=query_name)
+        #queryset = Product.objects.filter(category__icontains='Club')  
+        queryset = Product.objects.filter(category__startswith='C')
         
     except Product.DoesNotExist:
         raise Http404("Club not found")
-    return render(request, 'ProductListClub.html', {'product':product,})
+    return render(request, 'ProductListClub.html', {'product':queryset,})
 
 
 def clubSet(request):
     try:
         #perform an ORM query to get specific clubs
-        product = Product.objects.filter(category__icontains='FullSet') 
+        product = Product.objects.filter(category__startswith='S') 
         #&& category='HalfSet')
     except Product.DoesNotExist:
         raise Http404("Club not found")
@@ -55,7 +53,7 @@ def clubSet(request):
 def accessory(request):
     try:
         #perform an ORM query to get specific clubs
-        product = Product.objects.filter(category__icontains='Accessory')
+        product = Product.objects.filter(category__startswith='A')
     except Product.DoesNotExist:
         raise Http404("Club not found")
     return render(request, 'ProductListAccess.html', {'product':product,})

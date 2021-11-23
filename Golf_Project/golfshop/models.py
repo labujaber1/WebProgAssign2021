@@ -42,6 +42,9 @@ class Customer(models.Model):
     first_name= models.CharField(max_length=20, blank=True)
     last_name= models.CharField(max_length=20, blank=True)
     gender= models.CharField(max_length=10, choices=GENDER_CHOICES, blank=True)
+    handycap = models.PositiveIntegerField(default=0)
+    email= models.CharField(max_length=30, blank=True)
+    phone_number= models.CharField(max_length=20, blank=True)
     def _str_(self):
         return self.last_name
         

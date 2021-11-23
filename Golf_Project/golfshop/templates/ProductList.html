@@ -22,7 +22,7 @@
                 <img src="{{ product.image.url }}" class="card-img-top" style="height: 9rem" alt="golf club">
                     <div class="card-body">
                         <a href="{% url 'SingleProduct' product.id %}">
-                            {{product.name | capfirst}} {{product.get_type_display }} {{product.get_brand_display}}
+                            {{product.name | capfirst}} {{product.get_category_display }} {{product.get_brand_display}}
                         </a>   
                     </div>
             </div>
