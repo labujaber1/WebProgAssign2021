@@ -19,13 +19,29 @@ def productList(request):
         raise Http404("Products not found")
     return render(request, 'ProductList.html', {'product':product,})
 
+def search(request):
+    try:
+        if request.method == "POST":
+            query_name = request.POST.get('name',None)
+            if query_name:
+                results = Product.objects.filter(name__icontains=query_name)
+                return render(request, 'SearchResults.html', {'results':results,})
+    except Product.DoesNotExist:
+        raise Http404("Product not found")
+    return render(request, 'SearchResults.html')
+
+
 def club(request):
     try:
-        #perform an ORM query to get specific clubs
-        product = Product.objects.filter(category__icontains='Club')
+        if request.method == "POST":
+            query_name = request.POST.get('Club',None)
+            if query_name:  
+                product = Product.objects.filter(category__icontains=query_name)
+        
     except Product.DoesNotExist:
         raise Http404("Club not found")
     return render(request, 'ProductListClub.html', {'product':product,})
+
 
 def clubSet(request):
     try:

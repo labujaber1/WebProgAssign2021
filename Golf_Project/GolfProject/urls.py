@@ -30,7 +30,8 @@ urlpatterns = [
     path('ProductListAccess/', golfshop.views.accessory, name="ProductListAccess"),
     
     path('SingleProduct/<int:id>/', golfshop.views.singleProduct, name="SingleProduct"),
-    
+    path('SearchResults/', golfshop.views.search, name="SearchResults"),
+  
     path('RegisterCustomer',golfshop.views.registerCustomer, name="RegisterCustomer"),
     path('GeneralEnquiry',golfshop.views.generalEnquiry, name="GeneralEnquiry"),
     path('BookFitting',golfshop.views.bookFitting, name="BookFitting"),

@@ -61,10 +61,17 @@
   </div>
  
   <!--personalised greeting to user-->
-  <span class="greet">Hello, {{request.user}}</span>
-  <span ><a  class="greet" href="#">Logout</a></span>
- 
-
+  <!--<span class="greet">Hello, {{request.user}}</span>-->
+  
+  
+  <form action="{% url 'SearchResults' %}" method="POST">
+    {% csrf_token %} 
+    <input type="text" name="name">
+    <input type="submit" name="submit" value="Search">
+  </form>
+  {% comment %} {% for result in results %}    
+    <a href="{% url 'SingleProduct' result.id %}" class="text-white text-decoration-none"> <p>{{result.name}}</p></a>
+  {% endfor %} {% endcomment %}
 
 
 </nav>
