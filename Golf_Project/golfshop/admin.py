@@ -11,7 +11,8 @@ class ClubAdmin(admin.ModelAdmin):
 class ClubAdmin(admin.ModelAdmin):
     # This changes the display of the Pet object in the Admin to a list of attributes
     list_display = ['name', 'category', 'price','quantity']
-
+    list_filter = ('brand','price','stockCondition','quantity')
+    search_fields = ['name']
 
 @admin.register(BookFitting)
 class ClubAdmin(admin.ModelAdmin):

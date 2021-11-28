@@ -3,13 +3,18 @@
 {% block content %}
 <div class="container jumbotron">
     <h4>Customer registry form</h4>
-    <br>
-    <form method="POST" action="" >
-        {% csrf_token %}
-        {{form.as_p}}
-        {{RegisterCustomer.as_p}} 
-       
-        <input class="btn btn-success" type="submit" value="Register Customer">
-    </form>
+    <div class="col-lg-6">
+        <div class="card card-body" >
+         <br>
+            <form  method="POST" action="">
+                {% csrf_token %}
+                {{form.as_p}}
+                {{RegisterCustomer.as_p}}
+
+                <input class="btn btn-success" type="submit" value="Register Customer">
+            </form>
+        </div>
+    </div>
+
 </div>
 {% endblock %}

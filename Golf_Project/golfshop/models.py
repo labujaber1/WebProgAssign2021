@@ -1,4 +1,5 @@
 from django.db import models
+from django.db.models.deletion import SET_NULL
 #from django.db.models.fields.related import ForeignKey
 
 
@@ -66,3 +67,12 @@ class BookFitting(models.Model):
     def _str_(self):
         return self.name
 
+class OrderForm(models.Model):
+    customer= models.ForeignKey(Customer, null=True, on_delete=models.SET_NULL,)
+    product= models.ForeignKey(Product, null=True, on_delete=SET_NULL,)
+    orderDate = models.DateTimeField(auto_now_add=True)
+    orderStatus = models.CharField(max_length=10, default='Unpaid')
+   
+    
+    def _str_(self):
+        return self.customerID

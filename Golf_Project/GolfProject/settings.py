@@ -39,6 +39,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'golfshop',
     'django_bootstrap_breadcrumbs',
+    'django_filters',
+    'widget_tweaks',
 
 ]
 

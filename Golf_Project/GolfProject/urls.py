@@ -31,11 +31,12 @@ urlpatterns = [
     
     path('SingleProduct/<int:id>/', golfshop.views.singleProduct, name="SingleProduct"),
     path('SearchResults/', golfshop.views.search, name="SearchResults"),
+    path('AdvancedSearch/', golfshop.views.advSearch, name="AdvancedSearch"),
   
     path('RegisterCustomer',golfshop.views.registerCustomer, name="RegisterCustomer"),
     path('GeneralEnquiry',golfshop.views.generalEnquiry, name="GeneralEnquiry"),
     path('BookFitting',golfshop.views.bookFitting, name="BookFitting"),
-    
+    path('PlaceOrder/', golfshop.views.placeOrder, name="PlaceOrder"),
 
 ]+ static(settings.STATIC_URL, document_root = settings.STATIC_ROOT)
 

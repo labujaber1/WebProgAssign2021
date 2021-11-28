@@ -29,19 +29,12 @@
               <li class="nav-item active">
                 <a class="nav-link" href="{% url 'Home' %}">Home</a>
               </li>
-              <!--show if staff sign in-->
-              <!--{% if request.user.is_staff %}
-              </li>
-              <li class="nav-item active">
-                <a class="nav-link" href="#">Add Club</a>
-              </li>
-              {% else %}
               <li class="nav-item">
                 <a class="nav-link" href="#">Cart</a>
               </li>
               
               <li class="nav-item">
-                <a class="nav-link" href="#">Login</a>-->
+                <a class="nav-link" href="#">Login</a>
               </li>
               <li class="nav-item ">
                 <a class="nav-link" href="{% url 'BookFitting' %}">Book a fitting</a>
@@ -52,7 +45,10 @@
               <li class="nav-item ">
                 <a class="nav-link" href="{% url 'RegisterCustomer' %}">Register Customer</a>
               </li>
-              {% endif %}
+              <li class="nav-item ">
+                <a class="nav-link" href="{% url 'PlaceOrder' %}">Place an order</a>
+              </li>
+              
             </div>
           </ul>
         </div> 
@@ -64,11 +60,13 @@
   <!--<span class="greet">Hello, {{request.user}}</span>-->
   
   
-  <form action="{% url 'SearchResults' %}" method="POST">
+  <form action="{% url 'SearchResults' %}" method="GET">
     {% csrf_token %} 
     <input type="text" name="name">
     <input type="submit" name="submit" value="Search">
   </form>
+  <a class="nav-link p-1" href="{% url 'AdvancedSearch' %}">Adv. filter</a>
+             
   {% comment %} {% for result in results %}    
     <a href="{% url 'SingleProduct' result.id %}" class="text-white text-decoration-none"> <p>{{result.name}}</p></a>
   {% endfor %} {% endcomment %}

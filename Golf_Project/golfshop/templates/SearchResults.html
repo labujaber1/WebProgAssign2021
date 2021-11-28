@@ -9,13 +9,11 @@
 {% block content %}
 <a href="{% url 'Home' %}" class="btn btn-outline-info" style="margin:5px" role="button">Back</a>
 <br>
-<!--display a single product from ProductList.html-->
+<!--display a single product in a list no frills-->
 
 {% for result in results %} 
     <ul>   
         <a href="{% url 'SingleProduct' result.id %}" class=" text-dark text-decoration-none text-center"> <p>{{result.name}}</p></a>
     </ul>
   {% endfor %}
-
-
 {% endblock %}
