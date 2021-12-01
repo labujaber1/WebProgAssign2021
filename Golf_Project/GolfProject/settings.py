@@ -21,7 +21,8 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'm37$#k!o)##_^loyo^fl!ek*uvf7yqrg5o=1@gtski2!-9qcs2'
-
+RECAPTCHA_PUBLIC_KEY = '6Le7aGwdAAAAAIXeGtJp05WX2i7Levzw94Ul6CwV'
+RECAPTCHA_PRIVATE_KEY = '6Le7aGwdAAAAAFLxNixTXJd3bwnU_EvIThPSGPpg'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
@@ -38,9 +39,12 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'golfshop',
-    'django_bootstrap_breadcrumbs',
     'django_filters',
     'widget_tweaks',
+    'crispy_forms',
+    'floppyforms',
+    'captcha',
+
 
 ]
 

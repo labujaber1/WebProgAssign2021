@@ -1,20 +1,22 @@
 {% extends 'Base.html' %}
  
 {% block content %}
- 
+
+{% load crispy_forms_tags %}
+
 <div class="jumbotron container row">
-<h1>Order form</h1>
+    <h1>Order form</h1>
     <div class="col-lg-6">
         <div class="card card-body">
            <form action="" method="POST" enctype="multipart/form-data">
               {% csrf_token %}
-                {{form.as_p}}
+                {{form|crispy}}
+                {{PlaceOrder|crispy}}
                 <br>
-             <input type="submit" name="submit">
+                <input type="submit" name="submit">
              </form>
             </div>
         </div>
     </div>
- 
 </div>
 {% endblock %}

@@ -7,8 +7,9 @@
 
 {% block content %}
 
-<a href="{% url 'Home' %}" class="btn btn-outline-info" style="margin:5px" role="button">Back</a>
+<a href="{% url 'Home' %}" class="btn btn-outline-info" style="margin:5px" role="button">Home</a>
 <br>
+{% include 'AdvancedSearch.html' %}
 <!--List of products-->
 <br>
 <div class="container bg-success text-white text-center p-5" >
@@ -16,13 +17,14 @@
 </div>
 <div class="container  bg-warning text-dark ">
     <div style="display: flex; flex-direction: row; flex-wrap: wrap">
-    {% for product in product %}
+    {% for filter in filter.qs %}
         <ul>
             <div class="card" style="width: 9rem;  margin: 8px">
-                <img src="{{ product.image.url }}" class="card-img-top" style="height: 9rem" alt="golf club">
+                <img src="{{ filter.image.url }}" class="card-img-top" style="height: 9rem" alt="golf club">
                     <div class="card-body">
-                        <a href="{% url 'SingleProduct' product.id %}">
-                            {{product.name | capfirst}} {{product.get_type_display }} {{product.get_brand_display}}
+                        <a href="{% url 'SingleProduct' filter.id %}">
+                            {{filter.name | capfirst}}, {{filter.get_type_display }}, 
+                            {{filter.get_brand_display}}, , £{{filter.price}}
                         </a>   
                     </div>
             </div>

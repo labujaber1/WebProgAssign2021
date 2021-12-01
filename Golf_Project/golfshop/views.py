@@ -14,24 +14,23 @@ def home(request):
 def productList(request):
     try:
         #perform an ORM query to get specific clubs
-        product = Product.objects.all().order_by("name")
-        #product = Product.objects.all().order_by("price")
+        product_list = Product.objects.all().order_by("name")
+        filter = SearchList(request.GET, queryset=product_list)
 
     except Product.DoesNotExist:
         raise Http404("Products not found")
-    return render(request, 'ProductList.html', {'product':product,})
-
+    return render(request, 'ProductList.html', {'filter':filter,})
 
 
 #return all single club products
 def club(request):
     try:
         #queryset = Product.objects.filter(category__icontains='Club')  
-        queryset = Product.objects.filter(category__startswith='C').order_by("type")
-        
+        query_set = Product.objects.filter(category__startswith='C').order_by("type")
+        filter = SearchList(request.GET, queryset=query_set)
     except Product.DoesNotExist:
         raise Http404("Club not found")
-    return render(request, 'ProductListClub.html', {'product':queryset,})
+    return render(request, 'ProductListClub.html', {'filter':filter,})
 
 #return all set of clubs products
 def clubSet(request):
@@ -45,10 +44,10 @@ def clubSet(request):
 def accessory(request):
     try:
         queryset = Product.objects.filter(category__startswith='A').order_by("name")
-        queryprice= Product.objects.filter(price__range=(min_price,max_price)).order_by("name")
+        #queryprice= Product.objects.filter(price__range=(min_price,max_price)).order_by("name")
     except Product.DoesNotExist:
         raise Http404("Club not found")
-    return render(request, 'ProductListAccess.html', {'product':queryset,'product':queryprice,})
+    return render(request, 'ProductListAccess.html', {'product':queryset,})
 
 #return details of a single club search
 def singleProduct(request, id):
@@ -108,7 +107,7 @@ def search(request):
         if request.method == "GET":
             query_name = request.GET.get('name',None)
             if query_name:
-                results = Product.objects.filter(name__startswith=query_name).order_by("name")
+                results = Product.objects.filter(name__startswith=query_name).order_by("price")
                 return render(request, 'SearchResults.html', {'results':results,})
     except Product.DoesNotExist:
         raise Http404("Product not found")

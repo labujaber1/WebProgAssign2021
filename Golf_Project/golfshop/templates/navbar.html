@@ -20,8 +20,6 @@
         <div class="col p-md-5 py-4">
           <h4 class="text-white">About the site</h4>
           <p class="text-white">A statement about the golf shop and maybe an image</p>
-         
-          
           
           </div>
           <ul class="navbar-nav">
@@ -29,10 +27,6 @@
               <li class="nav-item active">
                 <a class="nav-link" href="{% url 'Home' %}">Home</a>
               </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">Cart</a>
-              </li>
-              
               <li class="nav-item">
                 <a class="nav-link" href="#">Login</a>
               </li>
@@ -65,7 +59,7 @@
     <input type="text" name="name">
     <input type="submit" name="submit" value="Search">
   </form>
-  <a class="nav-link p-1" href="{% url 'AdvancedSearch' %}">Adv. filter</a>
+  <!--<a class="nav-link p-1" href="{% url 'AdvancedSearch' %}">Adv. filter</a>-->
              
   {% comment %} {% for result in results %}    
     <a href="{% url 'SingleProduct' result.id %}" class="text-white text-decoration-none"> <p>{{result.name}}</p></a>

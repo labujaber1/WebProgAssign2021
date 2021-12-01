@@ -52,7 +52,8 @@ class Customer(models.Model):
 class GeneralEnquiry(models.Model):
     name= models.CharField(max_length=30)
     email= models.CharField(max_length=30, blank=True)
-    enquiry= models.CharField(max_length=300)
+    phone_number= models.CharField(max_length=20, blank=True)
+    enquiry= models.TextField(max_length=300)
     phone_number= models.CharField(max_length=20, blank=True)
     def _str_(self):
         return self.name
@@ -62,7 +63,7 @@ class BookFitting(models.Model):
     customer_ID= models.CharField( max_length=10, blank=True)
     club_name= models.CharField( max_length=30)
     club_details= models.CharField( max_length=40, blank=True)
-    fitting_date= models.CharField( max_length=30)
+    fitting_date= models.DateField( max_length=30)
     contact_details= models.CharField(max_length=40)
     def _str_(self):
         return self.name
@@ -75,4 +76,4 @@ class OrderForm(models.Model):
    
     
     def _str_(self):
-        return self.customerID
+        return self.customer

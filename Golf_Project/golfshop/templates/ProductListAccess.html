@@ -7,7 +7,7 @@
 
 {% block content %}
 
-<a href="{% url 'Home' %}" class="btn btn-outline-info" style="margin:5px" role="button">Back</a>
+<a href="{% url 'Home' %}" class="btn btn-outline-info" style="margin:5px" role="button">Home</a>
 <br>
 <!--List of products-->
 <br>
@@ -22,7 +22,7 @@
                 <img src="{{ product.image.url }}" class="card-img-top" style="height: 9rem" alt="accessories">
                     <div class="card-body">
                         <a href="{% url 'SingleProduct' product.id %}">
-                            {{product.name | capfirst}} {{product.get_price_display }}
+                            {{product.name | capfirst}}, £{{product.price }}
                         </a>   
                     </div>
             </div>

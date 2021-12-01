@@ -1,6 +1,7 @@
 {% extends 'Base.html' %}
 {% load static%}
 {% block content %}
+{% load crispy_forms_tags %}
 <div class="container jumbotron">
     <h4>Customer registry form</h4>
     <div class="col-lg-6">
@@ -8,9 +9,9 @@
          <br>
             <form  method="POST" action="">
                 {% csrf_token %}
-                {{form.as_p}}
-                {{RegisterCustomer.as_p}}
-
+                {{form|crispy}}
+                {{RegisterCustomer|crispy}}
+                <br>
                 <input class="btn btn-success" type="submit" value="Register Customer">
             </form>
         </div>

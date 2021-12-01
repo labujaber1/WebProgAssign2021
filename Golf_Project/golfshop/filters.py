@@ -4,15 +4,13 @@ import django_filters
 
 
 class SearchList(django_filters.FilterSet):
-    '''  minPrice = django_filters.NumberFilter(name="price", lookup_type='gte')
-        maxPrice = django_filters.NumberFilter(name="price", lookup_type='lt')
-    ,'minPrice','maxPrice'
-    '''
+    price = django_filters.NumberFilter()
+    minPrice = django_filters.NumberFilter(field_name='price', lookup_expr='gt')
+    maxPrice = django_filters.NumberFilter(field_name='price', lookup_expr='lt')
+   
     class Meta:
         model = Product
-        fields = ['brand','gender','size','gripDirection']
-        #minPice= django_filters.DecimalField(max_digits=7, decimal_places=2)
-        #maxPrice= django_filters.DecimalField(max_digits=7, decimal_places=2)
-
+        fields = ['brand','gender','size','gripDirection','price']
+        
 
 

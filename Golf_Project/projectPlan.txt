@@ -48,12 +48,29 @@ navbar --> DONE
  make each home option work, display access,club,sets --> DONE
 create single search function --> DONE
 
->> create advanced search incl price range, 
+>> create advanced search incl price range, --> DONE
 >> add order html (use wk8)
 >> create login function
 >> create basket?
 >> email using captcha
 >> unit tests
+
+DONE -->
+As a customer I want to browse through all the clubs and equipment in stock 
+As a customer I would like to view clubs and equipment available with a set price range 
+As a customer I would like to browse clubs and equipment by make 
+As a site admin I need to have a secure login to the admin area of the site 
+As a site admin I need to be able to add new clubs and equipment to the stock – this should include make, model, price and image as a minimum 
+As a customer I would like to be able book a fitting session for specific clubs on a specific day.   
+As a customer I should be able to search for clubs and equipment using combined multiple filters e.g. price and make. 
+As a customer I would like to be able to sort my search results by price. 
+As a site admin I would like to be able to mark specific clubs and equipment as out of stock. 
+As a site admin I would like to be able to remove a club or equipment from stock.
+
+TODO -->
+As a customer I would like to place a general enquiry (captcha) 
+
+
 
 
 

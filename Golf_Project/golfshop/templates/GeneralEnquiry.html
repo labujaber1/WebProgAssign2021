@@ -1,17 +1,23 @@
 {% extends 'Base.html' %}
-{% load static%}
+{% load static %}
 {% block content %}
+
+{% load crispy_forms_tags %}
+
 <div class="container jumbotron">
     <h4>Make a general enquiry</h4>
     <br>
-    <form method="POST" action="">
-        {% csrf_token %}
-        <p><input type="text" name="name" placeholder="name..."></p>
-        <p><input type="text" name="email" placeholder="email..." ></p>
-        <p><input type="text" name="phoneNumber" placeholder="phoneNumber..."></p>
-        <p><input type="text" name="enquiry" placeholder="enquiry..." ></p>
-        <input class="btn btn-success" type="submit" value="GeneralEnquiry">
-        <p>Not registered?<a href="{% url 'RegisterCustomer' %}">Register</a></p>
-    </form>
+    <div class="col-lg-6">
+        <div class="card card-body">
+            <form method="POST" action="">
+                {% csrf_token %}
+                {{ form|crispy }}
+                {{ GeneralEnquiry|crispy }}
+                <br>
+                <input class="btn btn-success" type="submit" value="GeneralEnquiry">
+                <p>Not registered?<a href="{% url 'RegisterCustomer' %}">Register</a></p>
+            </form>
+        </div>
+    </div>
 </div>
 {% endblock %}

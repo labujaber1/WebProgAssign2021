@@ -1,6 +1,8 @@
 {% extends 'Base.html' %}
 
 {% block content %}
+{% load crispy_forms_tags %}
+
 
 <div class="container jumbotron">
     <h4>Book a fitting</h4>
@@ -9,8 +11,8 @@
             <br>
             <form action="" method="POST">
                 {% csrf_token %}
-                {{ form.as_p }}
-                {{ BookFitting.as_p }}
+                {{ form|crispy }}
+                {{ BookFitting|crispy }}
                 <br>
                 <input class="btn btn-success" type="submit" name="Book a fitting">
 
