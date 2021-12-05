@@ -9,6 +9,7 @@
     <br>
     <div class="col-lg-6">
         <div class="card card-body">
+            {% include 'Messages.html' %} 
             <form method="POST" action="">
                 {% csrf_token %}
                 {{ form|crispy }}

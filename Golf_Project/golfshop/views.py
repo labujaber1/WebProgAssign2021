@@ -1,6 +1,7 @@
-from django.http.response import BadHeaderError, HttpResponse
+from django.http.response import BadHeaderError, HttpResponse, HttpResponseRedirect
 from django.core.mail import send_mail
 from django.shortcuts import render,redirect
+from django.contrib import messages
 from django.http import Http404
 from .models import Product
 from .form import *
@@ -66,6 +67,7 @@ def registerCustomer(request):
         form=customerRegisterForm(request.POST,request.FILES)
         if(form.is_valid()):
             form.save()
+            messages.success(request, 'Thankyou, your registration was successful')
             return redirect('/')
         
     return render(request, 'RegisterCustomer.html', {'RegisterCustomer': form})
@@ -77,11 +79,12 @@ def bookFitting(request):
         form=customerFittingForm(request.POST,request.FILES)
         if(form.is_valid()):
             form.save()
+            messages.success(request, 'Your booking for a fitting has been saved.')
             return redirect('/')
         
     return render(request, 'BookFitting.html', {'BookFitting': form})
 
-#customer general enquiry form check console for results
+#customer general email enquiry form, check console for results
 def generalEnquiry(request):
     if request.method=='GET':
         form=generalEnquiriesForm()
@@ -96,17 +99,20 @@ def generalEnquiry(request):
             'enquiry': form.cleaned_data['enquiry'],
             }
             message = "\n".join(body.values())
-            try:
-                send_mail(subject,message,'admin@example.com',['admin@example.com'])
-            except BadHeaderError:
-                return HttpResponse('Invalid header found.')
-            return redirect('Success')
+            form.save()
+           
+        try:
+            send_mail(subject,message,'admin@example.com',['admin@example.com'])
+            messages.success(request, 'Email enquiry sent, thankyou.')
+        except BadHeaderError:
+            messages.error(request,form.errors)
+            return HttpResponse('Invalid header found.')
+        return HttpResponseRedirect('/')
+        
     form= generalEnquiriesForm()   
     return render(request, 'GeneralEnquiry.html', {'form': form})
 
-def successEmail(request):
-    return HttpResponse('Thankyou for your email')
-    #return render(request,'Success.html')
+
 
 def placeOrder(request):
     customer= Customer.objects.all()

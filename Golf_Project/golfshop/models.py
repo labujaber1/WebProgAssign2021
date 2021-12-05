@@ -39,29 +39,31 @@ class Product(models.Model):
 
 
 class Customer(models.Model):
-    GENDER_CHOICES= (('L','Lady'),('M','Male'),('J','Juniors'))
+    GENDER_CHOICES= (('L','Lady'),('G','Gent'),('J','Junior'))
     first_name= models.CharField(max_length=20, blank=True)
     last_name= models.CharField(max_length=20, blank=True)
     gender= models.CharField(max_length=10, choices=GENDER_CHOICES, blank=True)
     handycap = models.PositiveIntegerField(default=0)
     email= models.CharField(max_length=30, blank=True)
     phone_number= models.CharField(max_length=20, blank=True)
+    password= models.CharField(max_length=20, blank=True)
+    username= models.CharField(max_length=20, blank=True)
     def _str_(self):
         return self.last_name
         
 class GeneralEnquiry(models.Model):
-    name= models.CharField(max_length=30)
+    
     from_email= models.EmailField(max_length=30, blank=True)
+    name= models.CharField(max_length=30)
     phone_number= models.CharField(max_length=20, blank=True)
+    subject= models.CharField(max_length=30, blank=True)
     enquiry= models.TextField(max_length=300)
     def _str_(self):
         return self.name
 
 class BookFitting(models.Model):
     name= models.CharField( max_length=30)
-    customer_ID= models.CharField( max_length=10, blank=True)
-    club_name= models.CharField( max_length=30)
-    club_details= models.CharField( max_length=40, blank=True)
+    description= models.CharField( max_length=30)
     fitting_date= models.DateField( max_length=30)
     contact_details= models.CharField(max_length=40)
     def _str_(self):

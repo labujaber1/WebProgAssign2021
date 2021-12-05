@@ -28,11 +28,10 @@ urlpatterns = [
     path('ProductListClub/', golfshop.views.club, name="ProductListClub"),
     path('ProductListSet/', golfshop.views.clubSet, name="ProductListSet"),
     path('ProductListAccess/', golfshop.views.accessory, name="ProductListAccess"),
-   #path('',include('golfshop.urls')),
+   
     path('SingleProduct/<int:id>/', golfshop.views.singleProduct, name="SingleProduct"),
     path('SearchResults/', golfshop.views.search, name="SearchResults"),
-    path('Success/', golfshop.views.successEmail, name="Success"),
-  
+    
     path('RegisterCustomer',golfshop.views.registerCustomer, name="RegisterCustomer"),
     path('GeneralEnquiry',golfshop.views.generalEnquiry, name="GeneralEnquiry"),
     path('BookFitting',golfshop.views.bookFitting, name="BookFitting"),

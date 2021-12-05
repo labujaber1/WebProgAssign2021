@@ -3,7 +3,7 @@ from .models import *
 from django import forms
 from crispy_forms.helper import FormHelper
 from crispy_forms.layout import Submit
-import floppyforms as forms
+#import floppyforms as forms
 
 
 class customerRegisterForm(ModelForm):
@@ -17,11 +17,13 @@ class generalEnquiriesForm(ModelForm):
         fields='__all__'
    
 class customerFittingForm(ModelForm):
+    fitting_date = forms.DateField(widget = forms.SelectDateWidget)
     class Meta:
         model=BookFitting
         fields='__all__'    
 
 class createorderform(ModelForm):
+    order_date = forms.DateField(widget = forms.SelectDateWidget)
     class Meta:
         model=OrderForm
         fields="__all__"

@@ -1,7 +1,10 @@
 from django.contrib import admin
 from .models import Customer,Product,BookFitting,GeneralEnquiry
 
-admin.site.register(GeneralEnquiry)
+@admin.register(GeneralEnquiry)
+class ClubAdmin(admin.ModelAdmin):
+    list_display = ['name','from_email','subject']
+
 @admin.register(Customer)
 class ClubAdmin(admin.ModelAdmin):
     # This changes the display of the Pet object in the Admin to a list of attributes
