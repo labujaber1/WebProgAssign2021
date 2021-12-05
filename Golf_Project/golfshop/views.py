@@ -1,3 +1,5 @@
+from django.http.response import BadHeaderError, HttpResponse
+from django.core.mail import send_mail
 from django.shortcuts import render,redirect
 from django.http import Http404
 from .models import Product
@@ -79,16 +81,32 @@ def bookFitting(request):
         
     return render(request, 'BookFitting.html', {'BookFitting': form})
 
-#customer general enquiry form
+#customer general enquiry form check console for results
 def generalEnquiry(request):
-    form=generalEnquiriesForm()
-    if(request.method=='POST'):
+    if request.method=='GET':
+        form=generalEnquiriesForm()
+    else:
         form=generalEnquiriesForm(request.POST,request.FILES)
         if(form.is_valid()):
-            form.save()
-            return redirect('/')
-       
-    return render(request, 'GeneralEnquiry.html', {'GeneralEnquiry': form})
+            subject = "Customer enquiry"
+            body ={
+            'name': form.cleaned_data['name'],
+            'from_email': form.cleaned_data['from_email'],
+            'phone_number': form.cleaned_data['phone_number'],
+            'enquiry': form.cleaned_data['enquiry'],
+            }
+            message = "\n".join(body.values())
+            try:
+                send_mail(subject,message,'admin@example.com',['admin@example.com'])
+            except BadHeaderError:
+                return HttpResponse('Invalid header found.')
+            return redirect('Success')
+    form= generalEnquiriesForm()   
+    return render(request, 'GeneralEnquiry.html', {'form': form})
+
+def successEmail(request):
+    return HttpResponse('Thankyou for your email')
+    #return render(request,'Success.html')
 
 def placeOrder(request):
     customer= Customer.objects.all()
@@ -122,28 +140,5 @@ def advSearch(request):
     filter = SearchList(request.GET, queryset=product_list)
     return render(request, 'AdvancedSearch.html', {'filter': filter})
 
-
-def advSearches(request):
-    try:
-        if (request.method == 'POST'):
-            form = SearchList(request.POST)
-            if form.is_valid():
-                queryset = Product.objects.filter(
-                    name__icontains=form['name'].value(),
-                    brand__icontains=form['brand'].value(), 
-                    category__icontains=form['category'].value(),
-                    type__icontains=form['type'].value(), 
-                    size__icontains=form['size'].value(),
-                    gripDirection__icontains=form['gripDirection'].value(), 
-                    gender__icontains=form['gender'].value() 
-                #priceMin
-                #priceMax
-            )
-            context={'form':form,'queryset':queryset}
-            return render(request, 'AdvancedSearch.html',context )
-    except Product.DoesNotExist:
-        raise Http404("Form not found")      
-    
-    return render(request, 'AdvancedSearch.html')
 
 

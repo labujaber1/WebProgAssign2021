@@ -51,10 +51,9 @@ class Customer(models.Model):
         
 class GeneralEnquiry(models.Model):
     name= models.CharField(max_length=30)
-    email= models.CharField(max_length=30, blank=True)
+    from_email= models.EmailField(max_length=30, blank=True)
     phone_number= models.CharField(max_length=20, blank=True)
     enquiry= models.TextField(max_length=300)
-    phone_number= models.CharField(max_length=20, blank=True)
     def _str_(self):
         return self.name
 

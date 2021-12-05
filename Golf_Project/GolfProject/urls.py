@@ -15,7 +15,7 @@ Including another URLconf
 """
 from typing import ValuesView
 from django.contrib import admin
-from django.urls import path
+from django.urls import path,include
 
 import golfshop.views
 from django.conf import settings 
@@ -28,10 +28,10 @@ urlpatterns = [
     path('ProductListClub/', golfshop.views.club, name="ProductListClub"),
     path('ProductListSet/', golfshop.views.clubSet, name="ProductListSet"),
     path('ProductListAccess/', golfshop.views.accessory, name="ProductListAccess"),
-    
+   #path('',include('golfshop.urls')),
     path('SingleProduct/<int:id>/', golfshop.views.singleProduct, name="SingleProduct"),
     path('SearchResults/', golfshop.views.search, name="SearchResults"),
-    path('AdvancedSearch/', golfshop.views.advSearch, name="AdvancedSearch"),
+    path('Success/', golfshop.views.successEmail, name="Success"),
   
     path('RegisterCustomer',golfshop.views.registerCustomer, name="RegisterCustomer"),
     path('GeneralEnquiry',golfshop.views.generalEnquiry, name="GeneralEnquiry"),

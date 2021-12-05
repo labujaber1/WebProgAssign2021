@@ -27,8 +27,9 @@ RECAPTCHA_PRIVATE_KEY = '6Le7aGwdAAAAAFLxNixTXJd3bwnU_EvIThPSGPpg'
 DEBUG = True
 
 ALLOWED_HOSTS = []
+#email testing response successful
 
-
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 # Application definition
 
 INSTALLED_APPS = [
@@ -134,3 +135,5 @@ STATICFILES_DIRS=[
 ]
 MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR   
+
+DEFAULT_FROM_EMAIL = 'labujaber1@sky.com'
