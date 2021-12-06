@@ -52,7 +52,7 @@ create single search function --> DONE
 >> add order html (use wk8)
 >> create login function
 >> create basket?
->> email using captcha
+>> email using captcha --> DONE
 >> unit tests
 
 DONE -->
@@ -66,9 +66,10 @@ As a customer I should be able to search for clubs and equipment using combined 
 As a customer I would like to be able to sort my search results by price. 
 As a site admin I would like to be able to mark specific clubs and equipment as out of stock. 
 As a site admin I would like to be able to remove a club or equipment from stock.
+As a customer I would like to place a general enquiry (captcha)
 
 TODO -->
-As a customer I would like to place a general enquiry (captcha) 
+ 
 
 
 

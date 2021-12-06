@@ -14,6 +14,7 @@
                 {% csrf_token %}
                 {{ form|crispy }}
                 {{ GeneralEnquiry|crispy }}
+                
                 <br>
                 <input class="btn btn-success" type="submit" value="Send enquiry">
                 <p>Not registered?<a href="{% url 'RegisterCustomer' %}">Register</a></p>

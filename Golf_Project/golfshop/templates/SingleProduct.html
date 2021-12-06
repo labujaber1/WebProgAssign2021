@@ -16,9 +16,11 @@
     <h1>Club details</h1>
 </div>
 <div class="container bg-success text-white  text-center p-5">
+    {% include 'Messages.html' %}
     <img src="{{product.image.url}}" class="card-img-top" style="width: 11rem" alt="golf club">
     <h1 class="text-dark">Name: <b>{{product.name}}</b></h1>
     <br>
+    <p>ID: {{product.id}}</p>
     <p>Brand: {{product.get_brand_display}}</p>
     <p>Type: {{product.get_type_display}}</p>
     <p>Price: £{{product.price}}</p>
@@ -28,6 +30,7 @@
     
     <p>Stock condition: {{product.get_stockCondition_display}}</p>
     <p>Description: {{product.summary | capfirst}}</p>
+    <a href="{% url 'PlaceOrder' product.id %}" class="btn btn-primary">Add to OrderForm</a>
 </div>
 <br><br>
 {% endblock %}

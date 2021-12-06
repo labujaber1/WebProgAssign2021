@@ -28,14 +28,14 @@ urlpatterns = [
     path('ProductListClub/', golfshop.views.club, name="ProductListClub"),
     path('ProductListSet/', golfshop.views.clubSet, name="ProductListSet"),
     path('ProductListAccess/', golfshop.views.accessory, name="ProductListAccess"),
-   
+    
     path('SingleProduct/<int:id>/', golfshop.views.singleProduct, name="SingleProduct"),
     path('SearchResults/', golfshop.views.search, name="SearchResults"),
-    
+    path('captcha/', include("captcha.urls")),
     path('RegisterCustomer',golfshop.views.registerCustomer, name="RegisterCustomer"),
     path('GeneralEnquiry',golfshop.views.generalEnquiry, name="GeneralEnquiry"),
     path('BookFitting',golfshop.views.bookFitting, name="BookFitting"),
-    path('PlaceOrder/', golfshop.views.placeOrder, name="PlaceOrder"),
+    path('PlaceOrder/<int:id>/', golfshop.views.placeOrder, name="PlaceOrder"),
 
 ]+ static(settings.STATIC_URL, document_root = settings.STATIC_ROOT)
 

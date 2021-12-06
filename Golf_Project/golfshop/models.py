@@ -1,7 +1,7 @@
 from django.db import models
 from django.db.models.deletion import SET_NULL
 #from django.db.models.fields.related import ForeignKey
-
+from django.contrib.auth import get_user_model
 
 class Product(models.Model):
     BRAND_CHOICES = (('WIL','Wilson'),('PK','Pike'),('FZ','Frazer'))
@@ -69,12 +69,21 @@ class BookFitting(models.Model):
     def _str_(self):
         return self.name
 
+#treat as cart
 class OrderForm(models.Model):
     customer= models.ForeignKey(Customer, null=True, on_delete=models.SET_NULL,)
     product= models.ForeignKey(Product, null=True, on_delete=SET_NULL,)
     orderDate = models.DateTimeField(auto_now_add=True)
     orderStatus = models.CharField(max_length=10, default='Unpaid')
-   
-    
-    def _str_(self):
-        return self.customer
+    quantity = models.IntegerField(default=1)
+    def __str__(self):
+        return f'{self.orderDate} of {self.customer}'
+
+
+
+
+
+
+
+
+

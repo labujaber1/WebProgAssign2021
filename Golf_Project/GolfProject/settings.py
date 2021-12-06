@@ -43,7 +43,6 @@ INSTALLED_APPS = [
     'django_filters',
     'widget_tweaks',
     'crispy_forms',
-    'floppyforms',
     'captcha',
 
 

@@ -1,6 +1,6 @@
 from django.http.response import BadHeaderError, HttpResponse, HttpResponseRedirect
 from django.core.mail import send_mail
-from django.shortcuts import render,redirect
+from django.shortcuts import render,redirect,get_object_or_404
 from django.contrib import messages
 from django.http import Http404
 from .models import Product
@@ -85,6 +85,7 @@ def bookFitting(request):
     return render(request, 'BookFitting.html', {'BookFitting': form})
 
 #customer general email enquiry form, check console for results
+#includes a captcha step
 def generalEnquiry(request):
     if request.method=='GET':
         form=generalEnquiriesForm()
@@ -99,31 +100,37 @@ def generalEnquiry(request):
             'enquiry': form.cleaned_data['enquiry'],
             }
             message = "\n".join(body.values())
+            #messages.info(request,'Yep, I believe you are human')
             form.save()
-           
-        try:
-            send_mail(subject,message,'admin@example.com',['admin@example.com'])
-            messages.success(request, 'Email enquiry sent, thankyou.')
-        except BadHeaderError:
-            messages.error(request,form.errors)
-            return HttpResponse('Invalid header found.')
-        return HttpResponseRedirect('/')
-        
+            try:
+                send_mail(subject,message,'admin@example.com',['admin@example.com'])
+                messages.success(request, 'Email enquiry sent, thankyou.')
+            except BadHeaderError:
+                messages.error(request,form.errors)
+                return HttpResponse('Invalid header found.')
+            return HttpResponseRedirect('/')
+        else:
+            messages.error(request,'I doubt you are human, try again bot')
+            form= generalEnquiriesForm()
     form= generalEnquiriesForm()   
     return render(request, 'GeneralEnquiry.html', {'form': form})
 
 
 
-def placeOrder(request):
+def placeOrder(request,id):
     customer= Customer.objects.all()
+    product= Product.objects.get(id=id)
     form=createorderform()
     if(request.method=='POST'):
-        form=createorderform(request.POST,instance=customer)
+        form=createorderform(request.POST,instance=product)
         if(form.is_valid()):
+            
             form.save()
+            messages.success(request,"Thankyou, your order has been placed and an email will be sent when ready for collection")
             return redirect('/')
     context={'form':form}
     return render(request,"PlaceOrder.html",context)
+
 
 #single search by product name in nav bar
 def search(request):
@@ -141,7 +148,6 @@ def search(request):
 #called from urls
 def advSearch(request):
     product_list = Product.objects.all()
-    #.order_by("name")
     #SearchList is a filter from filters.py
     filter = SearchList(request.GET, queryset=product_list)
     return render(request, 'AdvancedSearch.html', {'filter': filter})
