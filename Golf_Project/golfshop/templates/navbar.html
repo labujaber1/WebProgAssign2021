@@ -13,26 +13,23 @@
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
-   
+  <a class="fas fa-home text-success" href="{% url 'Home' %}"></a>
   <div class="collapse navbar-collapse" id="navbarNav">
     <div class="col">
       <div class="row gx-5">
         <div class="col p-md-5 py-4">
-          <h4 class="text-white">About the site</h4>
-          <p class="text-white">A statement about the golf shop and maybe an image</p>
-          
+          <h4 class="text-info">About the site</h4>
+          <p class="text-light">Welcome to the shops inventory viewer.</p>
+          <p class="text-light">Please feel free to view what we stock for members.</p>
+          <p class="text-light">Better still come in and see us some time, we would love to see you.</p>
           </div>
           <ul class="navbar-nav">
             <div class="col p-md-5 py-4">
-              <li class="nav-item active">
-                <a class="nav-link" href="{% url 'Home' %}">Home</a>
-              </li>
-              
               <li class="nav-item ">
                 <a class="nav-link" href="{% url 'BookFitting' %}">Book a fitting</a>
               </li>
               <li class="nav-item ">
-                <a class="nav-link" href="{% url 'GeneralEnquiry' %}">Make an enquiry</a>
+                <a class="nav-link" href="{% url 'GeneralEnquiry' %}">Send an enquiry</a>
               </li>
               <li class="nav-item ">
                 <a class="nav-link" href="{% url 'RegisterCustomer' %}">Register Customer</a>

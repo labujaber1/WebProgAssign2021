@@ -35,7 +35,7 @@ urlpatterns = [
     path('RegisterCustomer',golfshop.views.registerCustomer, name="RegisterCustomer"),
     path('GeneralEnquiry',golfshop.views.generalEnquiry, name="GeneralEnquiry"),
     path('BookFitting',golfshop.views.bookFitting, name="BookFitting"),
-    path('PlaceOrder/<int:id>/', golfshop.views.placeOrder, name="PlaceOrder"),
+    path('PlaceOrder/<pk>/', golfshop.views.placeOrder, name="PlaceOrder"),
 
 ]+ static(settings.STATIC_URL, document_root = settings.STATIC_ROOT)
 

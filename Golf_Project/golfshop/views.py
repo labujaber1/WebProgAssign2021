@@ -3,10 +3,10 @@ from django.core.mail import send_mail
 from django.shortcuts import render,redirect,get_object_or_404
 from django.contrib import messages
 from django.http import Http404
-from .models import Product
+from .models import *
 from .form import *
 from .filters import *
-
+from django.utils import timezone
 
 
 def home(request):
@@ -117,19 +117,20 @@ def generalEnquiry(request):
 
 
 
-def placeOrder(request,id):
-    customer= Customer.objects.all()
-    product= Product.objects.get(id=id)
-    form=createorderform()
+def placeOrder(request,pk):
+    product= get_object_or_404(Product, pk=pk)
+    #product= Product.objects.get(id=pk)
+    productform=createorder(instance=product)
     if(request.method=='POST'):
-        form=createorderform(request.POST,instance=product)
-        if(form.is_valid()):
-            
-            form.save()
+        filled_form=createorder(request.POST,instance=product)
+        if(filled_form.is_valid()):
+            productform=filled_form
+            filled_form.save()
             messages.success(request,"Thankyou, your order has been placed and an email will be sent when ready for collection")
             return redirect('/')
-    context={'form':form}
-    return render(request,"PlaceOrder.html",context)
+  
+    return render(request,"PlaceOrder.html",{'productform':productform,'product':product})
+
 
 
 #single search by product name in nav bar

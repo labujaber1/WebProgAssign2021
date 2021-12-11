@@ -1,7 +1,7 @@
 from django.contrib import admin
 
 
-from .models import Customer, OrderForm,Product,BookFitting,GeneralEnquiry
+from .models import Customer, Order,Product,BookFitting,GeneralEnquiry
 
 @admin.register(GeneralEnquiry)
 class ClubAdmin(admin.ModelAdmin):
@@ -25,6 +25,6 @@ class ClubAdmin(admin.ModelAdmin):
     list_display = ['name', 'fitting_date', 'contact_details']
 
 
-@admin.register(OrderForm)
+@admin.register(Order)
 class ClubAdmin(admin.ModelAdmin):
     list_display = ['customer','product','orderDate']

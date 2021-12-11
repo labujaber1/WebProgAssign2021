@@ -1,9 +1,7 @@
 from django.forms import ModelForm
 from .models import *
 from django import forms
-from crispy_forms.helper import FormHelper
-from crispy_forms.layout import Submit
-#import floppyforms as forms
+
 from captcha.fields import CaptchaField
 
 
@@ -24,14 +22,12 @@ class customerFittingForm(ModelForm):
         model=BookFitting
         fields='__all__'    
 
-class createorderform(ModelForm):
+class createorder(ModelForm):
     order_date = forms.DateField(widget = forms.SelectDateWidget)
-    
     class Meta:
-        model=OrderForm
+        model=Order
         fields="__all__"
-        exclude=['orderStatus','quantity','stockCondition','summary','image','handycap'] 
- 
+        
 
 
 

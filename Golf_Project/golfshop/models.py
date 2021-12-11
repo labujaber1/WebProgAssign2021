@@ -70,7 +70,7 @@ class BookFitting(models.Model):
         return self.name
 
 #treat as cart
-class OrderForm(models.Model):
+class Order(models.Model):
     customer= models.ForeignKey(Customer, null=True, on_delete=models.SET_NULL,)
     product= models.ForeignKey(Product, null=True, on_delete=SET_NULL,)
     orderDate = models.DateTimeField(auto_now_add=True)
