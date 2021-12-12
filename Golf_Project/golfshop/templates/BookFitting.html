@@ -1,17 +1,25 @@
 {% extends 'Base.html' %}
 
 {% block content %}
+{% load crispy_forms_tags %}
 
-<div class="container jumbotron" >
+
+<div class="container jumbotron">
+    {% include 'Messages.html' %}
     <h4>Book a fitting</h4>
-    <br>
-    <form action="" method="POST" >
-        {% csrf_token %}
-        {{ form.as_p }}
-        {{ BookFitting.as_p }}
-        <br>
-        <input class="btn btn-success" type="submit" name="Book a fitting">
-    </form>
+    <div class="col-col-lg-6">
+        <div class="card card-body">
+            <br>
+            <form action="" method="POST">
+                {% csrf_token %}
+                {{ form|crispy }}
+                {{ BookFitting|crispy }}
+                <br>
+                <input class="btn btn-success" type="submit" name="Book a fitting">
+
+            </form>
+        </div>
+    </div>
 </div>
 
 {% endblock %}

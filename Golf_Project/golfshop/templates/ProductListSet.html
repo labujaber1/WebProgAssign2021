@@ -1,0 +1,35 @@
+{% extends 'Base.html' %}
+{% load static %}
+
+{% block bubbly_fun %}
+
+{% endblock %}
+
+{% block content %}
+
+<a href="{% url 'Home' %}" class="btn btn-outline-info" style="margin:5px" role="button">Home</a>
+<br>
+<!--List of products-->
+<br>
+<div class="container bg-success text-white text-center p-5" >
+        <h1>Set of clubs list</h1>
+</div>
+<div class="container  bg-warning text-dark ">
+    <div style="display: flex; flex-direction: row; flex-wrap: wrap">
+    {% for product in product %}
+        <ul>
+            <div class="card" style="width: 9rem;  margin: 8px">
+                <img src="{{ product.image.url }}" class="card-img-top" style="height: 9rem" alt="golf club">
+                    <div class="card-body">
+                        <a href="{% url 'SingleProduct' product.id %}">
+                            {{product.name | capfirst}}, {{product.get_type_display }}, 
+                            {{product.get_brand_display}}, £{{filter.price}}
+                        </a>   
+                    </div>
+            </div>
+        </ul>
+    {% endfor %}
+    </div>
+</div>
+
+{% endblock %}

@@ -7,20 +7,24 @@
 
 {% block content %}
 
+<a href="{% url 'Home' %}" class="btn btn-outline-info" style="margin:5px" role="button">Home</a>
+<br>
+{% include 'AdvancedSearch.html' %}
 <!--List of products-->
 <br>
 <div class="container bg-success text-white text-center p-5" >
-        <h1>Club list</h1>
+        <h1>Product list</h1>
 </div>
 <div class="container  bg-warning text-dark ">
     <div style="display: flex; flex-direction: row; flex-wrap: wrap">
-    {% for club in club %}
+    {% for filter in filter.qs %}
         <ul>
             <div class="card" style="width: 9rem;  margin: 8px">
-                <img src="{{ club.club_image.url }}" class="card-img-top" style="height: 9rem" alt="golf club">
+                <img src="{{ filter.image.url }}" class="card-img-top" style="height: 9rem" alt="golf club">
                     <div class="card-body">
-                        <a href="{% url 'SingleProduct' club.id %}">
-                            {{club.club_name | capfirst}} {{club.get_club_type_display }} {{club.get_club_set_display}}
+                        <a href="{% url 'SingleProduct' filter.id %}">
+                            {{filter.name | capfirst}}, {{filter.get_brand_display}},  
+                            {{filter.get_category_display}}, £{{filter.price}} 
                         </a>   
                     </div>
             </div>

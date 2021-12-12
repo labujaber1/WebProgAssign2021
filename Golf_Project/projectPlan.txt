@@ -29,35 +29,47 @@ TEST --> PASSED
 19. store all data to db 
 19.1 create insert (in admin)
 19.2 - TEST UNIT METHODS
-        RUN --> 
+        RUN --> BookFittingForm -->
+        RUN --> generalEnquiry -->
+        RUN --> customerRegister -->
 
 20. 
-create search function
-create advanced search
-create add product,admin login in html --> passed
-add images for display products etc --> passed
+
+create add product,admin login in html --> PASSED
+add images for display products etc --> PASSED
 #get nav method breadcumbs --> failed changed mind no need
-add accessories model
-split club set from model leave fk
-add order html (use wk8)
-add back button
-create login function
-create basket?
-html pages
-base
-home
-navbar
+add accessories model --> DONE
+split club set from model leave fk --> DONE
+add back button --> DONE
+html pages --> DONE
+base --> DONE
+home --> DONE
+navbar --> DONE
+ make each home option work, display access,club,sets --> DONE
+create single search function --> DONE
 
+>> create advanced search incl price range, --> DONE
+>> add order html (use wk8)
+>> create login function
+>> create basket?
+>> email using captcha --> DONE
+>> unit tests
 
+DONE -->
+As a customer I want to browse through all the clubs and equipment in stock 
+As a customer I would like to view clubs and equipment available with a set price range 
+As a customer I would like to browse clubs and equipment by make 
+As a site admin I need to have a secure login to the admin area of the site 
+As a site admin I need to be able to add new clubs and equipment to the stock – this should include make, model, price and image as a minimum 
+As a customer I would like to be able book a fitting session for specific clubs on a specific day.   
+As a customer I should be able to search for clubs and equipment using combined multiple filters e.g. price and make. 
+As a customer I would like to be able to sort my search results by price. 
+As a site admin I would like to be able to mark specific clubs and equipment as out of stock. 
+As a site admin I would like to be able to remove a club or equipment from stock.
+As a customer I would like to place a general enquiry (captcha)
 
-
-
-
-
-
-
-
-
+TODO -->
+ 
 
 
 
@@ -69,27 +81,6 @@ navbar
 
 
 forms views.py
-def placeOrder(request):
-    customer= Customer.objects.all()
-    form=createorderform(instance=customer)
-    if(request.method=='POST'):
-        form=createorderform(request.POST,instance=customer)
-        if(form.is_valid()):
-            form.save()
-            return redirect('/')
-    context={'form':form}
-    return render(request,"placeOrder.html",context)
- 
-def addClub(request):
-    form=createproductform()
-    if(request.method=='POST'):
-        form=createproductform(request.POST,request.FILES)
-        if(form.is_valid()):
-            form.save()
-            return redirect('/')
-    context={'form':form}
-    return render(request,"/addClub.html",context)
- 
 def registerPage(request):
     if request.user.is_authenticated:
         return redirect('home') 
@@ -129,35 +120,7 @@ def logoutPage(request):
     logout(request)
     return redirect('/')
 
-urls.py
-path('placeOrder', golfshop.views.placeOrder,name='placeOrder'),
-path('login', golfshop.views.loginPage,name='login'),
-path('logout', golfshop.views.logoutPage,name='logout'),
-path('register', golfshop.views.registerPage,name='register'),
-path('addClub', golfshop.views.addClub,name='addClub') 
 
-form.py
-class createuserform(UserCreationForm):
-    class Meta:
-        model=User
-        fields=['username','password'] 
- 
-class createorderform(ModelForm):
-    class Meta:
-        model=orderForm
-        fields="__all__"
-        exclude=['status']
- 
-class createproductform(ModelForm):
-    class Meta:
-        model=Club
-        fields='__all__'
- 
-class createcustomerform(ModelForm):
-    class Meta:
-        model=Customer
-        fields='__all__'
-        exclude=['user']
 
 /login.html
 {% extends 'Base.html' %}
@@ -175,21 +138,6 @@ class createcustomerform(ModelForm):
 {% endblock %}
 
 
-models
-class OrderForm(models.Model):
-    customer = models.ForeignKey(Customer, null=True, on_delete=models.SET_NULL)
-    club_product = models.ForeignKey(Club, null=True, on_delete=SET_NULL)
-    orderDate = models.DateTimeField(auto_now_add=True)
-    orderStatus = models.CharField(max_length=10, default='Unpaid')
-    def __str__(self):
-        return self.customer  
 
-        class BookFittingForm(models.Model):
-    BFcustomer = models.ForeignKey(Customer, null=True, on_delete=models.SET_NULL)
-    BFproduct = models.ForeignKey(Club, null=True, on_delete=SET_NULL)
-    fittingDate = models.DateTimeField(auto_now_add=True)
-    fittingStatus = models.CharField(max_length=10, default='Pending')
-    def __str__(self):
-        return self.customer
 
-   
+    

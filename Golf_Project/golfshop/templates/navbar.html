@@ -13,32 +13,21 @@
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
-  
+  <a class="fas fa-home text-success" href="{% url 'Home' %}"></a>
   <div class="collapse navbar-collapse" id="navbarNav">
     <div class="col">
       <div class="row gx-5">
         <div class="col p-md-5 py-4">
           <h4 class="text-white">About the site</h4>
-          <p class="text-white">A statement about the golf shop and maybe an image</div>
+          <p class="text-white">A statement about the golf shop and maybe an image</p>
+          
+          </div>
           <ul class="navbar-nav">
             <div class="col p-md-5 py-4">
               <li class="nav-item active">
                 <a class="nav-link" href="{% url 'Home' %}">Home</a>
               </li>
-              <!--show if staff sign in-->
-              <!--{% if request.user.is_staff %}
-              </li>
-              <li class="nav-item active">
-                <a class="nav-link" href="#">Add Club</a>
-              </li>
-              {% else %}
-              <li class="nav-item">
-                <a class="nav-link" href="#">Cart</a>
-              </li>
               
-              <li class="nav-item">
-                <a class="nav-link" href="#">Login</a>-->
-              </li>
               <li class="nav-item ">
                 <a class="nav-link" href="{% url 'BookFitting' %}">Book a fitting</a>
               </li>
@@ -48,7 +37,8 @@
               <li class="nav-item ">
                 <a class="nav-link" href="{% url 'RegisterCustomer' %}">Register Customer</a>
               </li>
-              {% endif %}
+              
+              
             </div>
           </ul>
         </div> 
@@ -58,9 +48,11 @@
  
   <!--personalised greeting to user-->
   <span class="greet">Hello, {{request.user}}</span>
-  <span ><a  class="greet" href="#">Logout</a></span>
- 
-
-
-
+  
+  <form action="{% url 'SearchResults' %}" method="GET">
+    {% csrf_token %} 
+    <input type="text" name="name">
+    <input type="submit" name="submit" value="Search">
+  </form>
+  
 </nav>

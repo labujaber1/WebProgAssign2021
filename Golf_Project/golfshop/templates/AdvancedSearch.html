@@ -1,0 +1,73 @@
+{% load static %}
+
+{% block bubbly_fun %}
+
+{% endblock %}
+
+
+{% load widget_tweaks %}
+<form method='GET' action=''>
+    
+    <div class="container ">
+        <h4 style="margin-top: 0">Filter</h4>
+        <div class="row">
+            <div class="form-group col-sm-4 col-md-3">
+                {{ filter.form.brand.label_tag }}
+                {% render_field filter.form.brand class="form-control" %}
+            </div>
+            <div class="form-group col-sm-4 col-md-3">
+                {{ filter.form.gender.label_tag }}
+                {% render_field filter.form.gender class="form-control" %}
+            </div>
+            <div class="form-group col-sm-4 col-md-3">
+                {{ filter.form.size.label_tag }}
+                {% render_field filter.form.size class="form-control" %}
+            </div>
+            <div class="form-group col-sm-4 col-md-3">
+                {{ filter.form.gripDirection.label_tag }}
+                {% render_field filter.form.gripDirection class="form-control" %}
+            </div>
+            <div class="form-group col-sm-4 col-md-3">
+                {{ filter.form.minPrice.label_tag }}
+                {% render_field filter.form.minPrice class="form-control" %}
+            </div>
+            <div class="form-group col-sm-4 col-md-3">
+                {{ filter.form.maxPrice.label_tag }}
+                {% render_field filter.form.maxPrice class="form-control" %}
+            </div>
+        </div>
+        <button type="submit" class="btn btn-primary ">
+            <span class="glyphicon glyphicon-search "></span> Search
+        </button>
+</div>   
+  
+  
+</form>
+<!--<div class="form-group col-sm-4 col-md-3">
+    <li class="list-group-item">
+        <input type="range" id="rangeMin" min="0" max="1000" oninput="minPrice.value=this.value" />
+        min price:<input type="number" onkeyup="rangeMin.value=this.value" id="minPrice" min="0" max="1000" />
+    </li>
+</div>
+<div class="form-group col-sm-4 col-md-3">
+    <li class="list-group-item">
+        <input type="range" id="rangeMax" min="0" max="1000" oninput="maxPrice.value=this.value" />
+        max price:<input type="number"  onkeyup="rangeMax.value=this.value" id="maxPrice" min="0" max="1000" />
+    </li>
+</div>-->
+
+    <!--
+        {{ filter.form.minPrice.label_tag }}
+        {{ filter.form.maxPrice.label_tag }}
+        {% render_field filter.form.minPrice class="form-control" %}
+        {% render_field filter.form.maxPrice class="form-control" %}
+    -->
+            
+        
+{% comment %} {% for filter in filter.qs %}
+<ul>
+    <a href="{% url 'SingleProduct' filter.id %}" class=" text-dark text-decoration-none text-center">
+        <p>{{filter.name}}, {{filter.get_brand_display}}, {{filter.get_gender_display}}, {{filter.get_gripDirection_display}}, {{filter.price}}</p>
+    </a>
+</ul >
+{% endfor %}{% endcomment %}

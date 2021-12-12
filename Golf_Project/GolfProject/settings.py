@@ -21,13 +21,15 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'm37$#k!o)##_^loyo^fl!ek*uvf7yqrg5o=1@gtski2!-9qcs2'
-
+RECAPTCHA_PUBLIC_KEY = '6Le7aGwdAAAAAIXeGtJp05WX2i7Levzw94Ul6CwV'
+RECAPTCHA_PRIVATE_KEY = '6Le7aGwdAAAAAFLxNixTXJd3bwnU_EvIThPSGPpg'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
 ALLOWED_HOSTS = []
+#email testing response successful
 
-
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 # Application definition
 
 INSTALLED_APPS = [
@@ -38,7 +40,12 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'golfshop',
-    'django_bootstrap_breadcrumbs',
+    'django_filters',
+    'widget_tweaks',
+    'crispy_forms',
+    'captcha',
+    'django_static_fontawesome',
+
 
 ]
 
@@ -128,3 +135,5 @@ STATICFILES_DIRS=[
 ]
 MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR   
+
+DEFAULT_FROM_EMAIL = 'labujaber1@sky.com'

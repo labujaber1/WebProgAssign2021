@@ -1,0 +1,19 @@
+{% extends 'Base.html' %}
+{% load static %}
+
+{% block bubbly_fun %}
+
+{% endblock %}
+
+
+{% block content %}
+<a href="{% url 'Home' %}" class="btn btn-outline-info" style="margin:5px" role="button">Home</a>
+<br>
+<!--display a single product in a list no frills-->
+
+{% for result in results %} 
+    <ul>   
+        <a href="{% url 'SingleProduct' result.id %}" class=" text-dark text-decoration-none text-center"> <p>{{result.name}}</p></a>
+    </ul>
+  {% endfor %}
+{% endblock %}

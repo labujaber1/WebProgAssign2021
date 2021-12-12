@@ -15,7 +15,7 @@ Including another URLconf
 """
 from typing import ValuesView
 from django.contrib import admin
-from django.urls import path
+from django.urls import path,include
 
 import golfshop.views
 from django.conf import settings 
@@ -25,11 +25,17 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', golfshop.views.home, name="Home"),
     path('ProductList/', golfshop.views.productList, name="ProductList"),
+    path('ProductListClub/', golfshop.views.club, name="ProductListClub"),
+    path('ProductListSet/', golfshop.views.clubSet, name="ProductListSet"),
+    path('ProductListAccess/', golfshop.views.accessory, name="ProductListAccess"),
+    
     path('SingleProduct/<int:id>/', golfshop.views.singleProduct, name="SingleProduct"),
+    path('SearchResults/', golfshop.views.search, name="SearchResults"),
+    path('captcha/', include("captcha.urls")),
     path('RegisterCustomer',golfshop.views.registerCustomer, name="RegisterCustomer"),
     path('GeneralEnquiry',golfshop.views.generalEnquiry, name="GeneralEnquiry"),
     path('BookFitting',golfshop.views.bookFitting, name="BookFitting"),
-    
+    path('PlaceOrder/<int:id>/', golfshop.views.placeOrder, name="PlaceOrder"),
 
 ]+ static(settings.STATIC_URL, document_root = settings.STATIC_ROOT)
 
