@@ -6,7 +6,7 @@ from django.http import Http404
 from .models import Product
 from .form import *
 from .filters import *
-
+from django.forms.models import model_to_dict
 
 
 def home(request):
@@ -100,7 +100,6 @@ def generalEnquiry(request):
             'enquiry': form.cleaned_data['enquiry'],
             }
             message = "\n".join(body.values())
-            #messages.info(request,'Yep, I believe you are human')
             form.save()
             try:
                 send_mail(subject,message,'admin@example.com',['admin@example.com'])
@@ -119,16 +118,15 @@ def generalEnquiry(request):
 
 def placeOrder(request,id):
     
-    product= Product.objects.get(id=id)
+    product= Product.objects.get(pk=id)
     form=createorderform()
     if(request.method=='POST'):
-        form=createorderform(request.POST,instance=product)
+        form=createorderform(request.POST,request.FILES)
         if(form.is_valid()):
-            
             form.save()
             messages.success(request,"Thankyou, your order has been placed and an email will be sent when ready for collection")
             return redirect('/')
-    context={'form':form}
+    context={'form':form,'product':product}
     return render(request,"PlaceOrder.html",context)
 
 

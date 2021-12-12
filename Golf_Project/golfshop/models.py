@@ -1,7 +1,7 @@
 from django.db import models
-from django.db.models.deletion import SET_NULL
-#from django.db.models.fields.related import ForeignKey
-from django.contrib.auth import get_user_model
+
+
+
 
 class Product(models.Model):
     BRAND_CHOICES = (('WIL','Wilson'),('PK','Pike'),('FZ','Frazer'))
@@ -34,7 +34,7 @@ class Product(models.Model):
     price= models.DecimalField(max_digits=6, decimal_places=2)
     stockCondition= models.CharField(max_length=10, choices=STOCKCONDITION, default='IS')
     quantity= models.PositiveIntegerField(default=0)
-    def _str_(self):
+    def __str__(self):
         return self.club_name
 
 
@@ -48,7 +48,7 @@ class Customer(models.Model):
     phone_number= models.CharField(max_length=20, blank=True)
     password= models.CharField(max_length=20, blank=True)
     username= models.CharField(max_length=20, blank=True)
-    def _str_(self):
+    def __str__(self):
         return self.last_name
         
 class GeneralEnquiry(models.Model):
@@ -58,7 +58,7 @@ class GeneralEnquiry(models.Model):
     phone_number= models.CharField(max_length=20, blank=True)
     subject= models.CharField(max_length=30, blank=True)
     enquiry= models.TextField(max_length=300)
-    def _str_(self):
+    def __str__(self):
         return self.name
 
 class BookFitting(models.Model):
@@ -66,21 +66,25 @@ class BookFitting(models.Model):
     description= models.CharField( max_length=30)
     fitting_date= models.DateField( max_length=30)
     contact_details= models.CharField(max_length=40)
-    def _str_(self):
+    def __str__(self):
         return self.name
 
-#treat as cart
-class OrderForm(models.Model):
-    customer= models.ForeignKey(Customer, null=True, on_delete=models.SET_NULL,)
-    product= models.ForeignKey(Product, null=True, on_delete=SET_NULL,)
-    orderDate = models.DateTimeField(auto_now_add=True)
-    orderStatus = models.CharField(max_length=10, default='Unpaid')
-    quantity = models.IntegerField(default=1)
+
+class orderform(models.Model):
+    customer= models.CharField(max_length=30, blank=True)
+    
     def __str__(self):
-        return f'{self.orderDate} of {self.customer}'
+        return self.customer
 
-
-
+class OrderRequest(models.Model):
+    customer = models.CharField(max_length=30, blank=30)
+    productName = models.CharField(max_length=30, blank=30)
+    productID = models.PositiveIntegerField(primary_key=True)
+    dateOfOrder = models.DateField(auto_now=True)
+    orderQuantity = models.IntegerField(default=1)
+    def __str__(self):
+        return self.productName
+    
 
 
 

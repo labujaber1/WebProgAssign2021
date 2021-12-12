@@ -25,12 +25,11 @@ class customerFittingForm(ModelForm):
         fields='__all__'    
 
 class createorderform(ModelForm):
-    order_date = forms.DateField(widget = forms.SelectDateWidget)
+     class Meta:
+        model=OrderRequest
+        fields=['customer', 'productName','productID','orderQuantity']
     
-    class Meta:
-        model=OrderForm
-        fields="__all__"
-        
+         
 
 
 

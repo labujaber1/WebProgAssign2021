@@ -10,7 +10,8 @@
     <div class="col-lg-6">
         <div class="card card-body">
            <form action="" method="POST" enctype="multipart/form-data">
-              {% csrf_token %}
+            <input  type="hidden" name="productID" value="{{product.id}}">
+            {% csrf_token %}
                 {{form|crispy}}
                 {{PlaceOrder|crispy}}
                 <br>
