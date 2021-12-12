@@ -30,7 +30,7 @@
     
     <p>Stock condition: {{product.get_stockCondition_display}}</p>
     <p>Description: {{product.summary | capfirst}}</p>
-    <a href="{% url 'PlaceOrder' product.pk %}" class="btn btn-primary">Add to Order Request</a>
+    <a href="{% url 'PlaceOrder' product.id %}" class="btn btn-primary">Add to Order Request</a>
 </div>
 <br><br>
 {% endblock %}

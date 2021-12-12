@@ -1,7 +1,7 @@
 from django.contrib import admin
 
 
-from .models import Customer, Order,Product,BookFitting,GeneralEnquiry
+from .models import Customer,Product,Order,BookFitting,GeneralEnquiry
 
 @admin.register(GeneralEnquiry)
 class ClubAdmin(admin.ModelAdmin):

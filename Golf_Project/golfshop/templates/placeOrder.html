@@ -12,7 +12,7 @@
            <form action="" method="POST" enctype="multipart/form-data">
               {% csrf_token %}
                 {{form|crispy}}
-                {{PlaceOrder|crispy}}
+                {{placeOrder|crispy}}
                 <br>
                 <input type="submit" name="submit">
              </form>
