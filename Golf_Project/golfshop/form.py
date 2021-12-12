@@ -30,8 +30,7 @@ class createorderform(ModelForm):
     class Meta:
         model=OrderForm
         fields="__all__"
-        exclude=['orderStatus','quantity','stockCondition','summary','image','handycap'] 
- 
+        
 
 
 
