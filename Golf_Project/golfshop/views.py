@@ -118,7 +118,7 @@ def generalEnquiry(request):
 
 
 def placeOrder(request,id):
-    customer= Customer.objects.all()
+    
     product= Product.objects.get(id=id)
     form=createorderform()
     if(request.method=='POST'):
