@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'crispy_forms',
     'captcha',
     'django_static_fontawesome',
+    
 
 
 ]
