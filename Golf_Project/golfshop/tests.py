@@ -83,13 +83,11 @@ class FunctionTestCase(TestCase):
     #     response.status_code
     #     self.assertEquals(response.status_code, 200)
 
-    #retry failed no absolute url
+    #save data check response
     def testFitting(self):
         client = Client()
         fitting = BookFitting(name='Jo',description='Something',fitting_date='2021-12-25',contact_details='jo@jo.com')
         fitting.save()
-        #response = client.get(fitting.get_absolute_url())
-        #response.status_code
         self.assertEquals(fitting.status_code, 200)
 
 
