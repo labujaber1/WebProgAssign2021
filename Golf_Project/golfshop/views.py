@@ -117,17 +117,17 @@ def generalEnquiry(request):
 
 
 def placeOrder(request,id):
-    
     product= Product.objects.get(pk=id)
-    form=createorderform()
+    Form=createorderform(instance=product)
     if(request.method=='POST'):
         form=createorderform(request.POST,request.FILES)
         if(form.is_valid()):
             form.save()
+            Form=form
             messages.success(request,"Thankyou, your order has been placed and an email will be sent when ready for collection")
             return redirect('/')
-    context={'form':form,'product':product}
-    return render(request,"PlaceOrder.html",context)
+    
+    return render(request,"PlaceOrder.html",{'form':Form,'product':product})
 
 
 #single search by product name in nav bar
